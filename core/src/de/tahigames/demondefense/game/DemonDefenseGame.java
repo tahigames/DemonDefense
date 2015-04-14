@@ -22,6 +22,7 @@ public class DemonDefenseGame extends Game {
     public void handleInput(Input input){
         if(Gdx.input.isTouched()){
             map.selectCellAt(input.getX(), input.getY());
+            Gdx.app.log("Input", "X: " + input.getX() + " Y: " + input.getY());
         }
     }
 }

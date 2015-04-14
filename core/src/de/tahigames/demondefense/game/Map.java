@@ -32,14 +32,18 @@ public class Map extends Entity {
     }
 
     public Cell getCellAt(int x, int y){
-        return grid[x * cellSize][y * cellSize];
+        return grid[x / cellSize][y / cellSize];
     }
 
     public void selectCellAt(int x, int y){
-        if(selectedCell != null)
-            selectedCell.removeComponent(selectRenderer);
-        selectedCell = getCellAt(x, y);
-        selectedCell.addComponent(selectRenderer);
+        if(x >= getX() && x < getX() + cellSize * grid.length
+                && y >= getY() && y < getY() + cellSize * grid.length){
+            if(selectedCell != null)
+                selectedCell.removeComponent(selectRenderer);
+            selectedCell = getCellAt(x, y);
+            selectedCell.addComponent(selectRenderer);
+        }
+
     }
 
     public void deselectCell(){

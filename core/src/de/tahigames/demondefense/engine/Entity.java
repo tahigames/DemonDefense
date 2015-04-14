@@ -19,23 +19,18 @@ public class Entity {
         this.y = y;
 
         //consider lazy initialization?
+        entities = new ArrayList<>();
         components = new ArrayList<>();
     }
 
     public void addChild(Entity child){
-        if(entities == null)
-            entities = new ArrayList<>();
         entities.add(child);
         child.onAddToCore(core);
     }
 
     public void removeChild(Entity child){
-        if(entities == null)
-            return;
         entities.remove(child);
         child.onRemoveFromCore(core);
-        if(entities.isEmpty())
-            entities = null;
     }
 
     void setCore(Core core){
@@ -45,19 +40,27 @@ public class Entity {
     public void onAddToCore(Core core){
         this.core = core;
 
-        if(core != null)
-            for (Component c : components){
+        if(core != null) {
+            for (Component c : components) {
                 c.onAddToCore(core);
             }
+            for (Entity e : entities){
+                e.onAddToCore(core);
+            }
+        }
     }
 
     public void onRemoveFromCore(Core core){
         this.core = null;
 
-        if(core != null)
-            for (Component c : components){
+        if(core != null) {
+            for (Component c : components) {
                 c.onAddToCore(core);
             }
+            for (Entity e : entities) {
+                e.onRemoveFromCore(core);
+            }
+        }
     }
 
     public void addComponent(Component component) {

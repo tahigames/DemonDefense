@@ -1,5 +1,8 @@
 package de.tahigames.demondefense.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+
 import de.tahigames.demondefense.engine.Core;
 import de.tahigames.demondefense.engine.Game;
 
@@ -13,5 +16,12 @@ public class DemonDefenseGame extends Game {
     public void init(Core core) {
         map = new Map(20, 20);
         core.getRoot().addChild(map);
+    }
+
+    @Override
+    public void handleInput(Input input){
+        if(Gdx.input.isTouched()){
+            map.selectCellAt(input.getX(), input.getY());
+        }
     }
 }

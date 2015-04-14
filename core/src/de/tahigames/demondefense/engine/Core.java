@@ -11,15 +11,18 @@ import de.tahigames.demondefense.engine.rendering.RenderingEngine;
  * Created by Mirco on 14.04.2015.
  */
 public class Core {
+
     private RenderingEngine renderingEngine;
 
     private Entity root;
 
-    public Core(){
+    public Core(Game game){
         renderingEngine = new RenderingEngine();
 
         root = new Entity(0,0);
         root.setCore(this);
+
+        game.init(this);
     }
 
     public void run(){

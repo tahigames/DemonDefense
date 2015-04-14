@@ -8,13 +8,17 @@ import de.tahigames.demondefense.engine.Component;
  */
 public class PhysicsComponent extends Component {
 
-    @Override
-    public void onAddToCore(Core core) {
+    public void integrate(float delta){
 
     }
 
     @Override
-    public void onRemoveFromCore(Core core) {
+    public void onAddToCore(Core core) {
+        core.getPhysicsEngine().addComponent(this);
+    }
 
+    @Override
+    public void onRemoveFromCore(Core core) {
+        core.getPhysicsEngine().removeComponent(this);
     }
 }

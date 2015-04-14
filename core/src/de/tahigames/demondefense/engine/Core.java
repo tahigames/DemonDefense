@@ -14,12 +14,15 @@ import de.tahigames.demondefense.engine.rendering.RenderingEngine;
  */
 public class Core {
 
+    private Game game;
+
     private RenderingEngine renderingEngine;
     private PhysicsEngine physicsEngine;
 
     private Entity root;
 
     public Core(Game game){
+        this.game = game;
         renderingEngine = new RenderingEngine();
         physicsEngine = new PhysicsEngine();
 
@@ -32,6 +35,7 @@ public class Core {
     public void run(){
         float delta = Gdx.graphics.getDeltaTime();
 
+        game.handleInput(Gdx.input);
         physicsEngine.simulate(delta);
         renderingEngine.render();
     }
@@ -42,5 +46,9 @@ public class Core {
 
     public RenderingEngine getRenderingEngine() {
         return renderingEngine;
+    }
+
+    public PhysicsEngine getPhysicsEngine() {
+        return physicsEngine;
     }
 }

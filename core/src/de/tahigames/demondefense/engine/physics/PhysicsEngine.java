@@ -8,7 +8,9 @@ import de.tahigames.demondefense.engine.Engine;
 public class PhysicsEngine extends Engine<PhysicsComponent> {
 
     public void simulate(float delta){
-
+        for (PhysicsComponent c : getComponents()){
+            c.integrate(delta);
+        }
     }
 
 }

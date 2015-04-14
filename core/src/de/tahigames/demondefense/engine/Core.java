@@ -13,16 +13,13 @@ import de.tahigames.demondefense.engine.rendering.RenderingEngine;
 public class Core {
     private RenderingEngine renderingEngine;
 
-    private ArrayList<Entity> entities;
+    private Entity root;
 
     public Core(){
         renderingEngine = new RenderingEngine();
 
-        entities = new ArrayList<>();
-
-        Entity e = new Entity(50,50);
-        e.addComponent(new RenderComponent(new Texture("badlogic.jpg")));
-        addEntity(e);
+        root = new Entity(0,0);
+        root.setCore(this);
     }
 
     public void run(){
@@ -31,14 +28,8 @@ public class Core {
         renderingEngine.render();
     }
 
-    public void addEntity(Entity e){
-        entities.add(e);
-        e.onAddToCore(this);
-    }
-
-    public void removeEntity(Entity e){
-        entities.remove(e);
-        e.onRemoveFromCore(this);
+    public Entity getRoot() {
+        return root;
     }
 
     public RenderingEngine getRenderingEngine() {

@@ -9,6 +9,7 @@ public class Entity {
 
     private Core core;
 
+    private ArrayList<Entity> entities;
     private ArrayList<Component> components;
 
     private float x, y;
@@ -19,6 +20,26 @@ public class Entity {
 
         //consider lazy initialization?
         components = new ArrayList<>();
+    }
+
+    public void addChild(Entity child){
+        if(entities == null)
+            entities = new ArrayList<>();
+        entities.add(child);
+        child.onAddToCore(core);
+    }
+
+    public void removeChild(Entity child){
+        if(entities == null)
+            return;
+        entities.remove(child);
+        child.onRemoveFromCore(core);
+        if(entities.isEmpty())
+            entities = null;
+    }
+
+    void setCore(Core core){
+        this.core = core;
     }
 
     public void onAddToCore(Core core){

@@ -1,6 +1,6 @@
-package de.tahigames.demondefense.engines.physics;
+package de.tahigames.demondefense.engine.physics;
 
-import de.tahigames.demondefense.engines.Engine;
+import de.tahigames.demondefense.engine.Engine;
 
 /**
  * Created by Mirco on 14.04.2015.

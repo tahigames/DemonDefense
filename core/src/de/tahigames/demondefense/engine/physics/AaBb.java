@@ -1,4 +1,4 @@
-package de.tahigames.demondefense.engines.physics;
+package de.tahigames.demondefense.engine.physics;
 
 /**
  * Created by Mirco on 14.04.2015.

@@ -1,10 +1,10 @@
-package de.tahigames.demondefense.engines.rendering;
+package de.tahigames.demondefense.engine.rendering;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import de.tahigames.demondefense.engines.Component;
-import de.tahigames.demondefense.Core;
+import de.tahigames.demondefense.engine.Component;
+import de.tahigames.demondefense.engine.Core;
 
 /**
  * Created by Mirco on 14.04.2015.

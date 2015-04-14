@@ -1,8 +1,6 @@
-package de.tahigames.demondefense;
+package de.tahigames.demondefense.engine;
 
 import java.util.ArrayList;
-
-import de.tahigames.demondefense.engines.Component;
 
 /**
  * Created by Mirco on 14.04.2015.

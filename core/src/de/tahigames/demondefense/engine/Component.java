@@ -1,7 +1,4 @@
-package de.tahigames.demondefense.engines;
-
-import de.tahigames.demondefense.Core;
-import de.tahigames.demondefense.Entity;
+package de.tahigames.demondefense.engine;
 
 /**
  * Created by Mirco on 14.04.2015.

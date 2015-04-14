@@ -1,11 +1,11 @@
-package de.tahigames.demondefense;
+package de.tahigames.demondefense.engine;
 
 import com.badlogic.gdx.graphics.Texture;
 
 import java.util.ArrayList;
 
-import de.tahigames.demondefense.engines.rendering.RenderComponent;
-import de.tahigames.demondefense.engines.rendering.RenderingEngine;
+import de.tahigames.demondefense.engine.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.rendering.RenderingEngine;
 
 /**
  * Created by Mirco on 14.04.2015.

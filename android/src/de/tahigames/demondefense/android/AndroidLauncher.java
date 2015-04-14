@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import de.tahigames.demondefense.DemonDefense;
+import de.tahigames.demondefense.main.DemonDefense;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override

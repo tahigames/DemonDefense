@@ -10,21 +10,33 @@ import de.tahigames.demondefense.engine.Engine;
  */
 public class PhysicsEngine extends Engine<PhysicsComponent> {
 
+    private float simulationTime;
+    private float timeToSimulate;
+
+    public PhysicsEngine(int simulationsPerSecond){
+        simulationTime = 1f / simulationsPerSecond;
+    }
+
     public void simulate(float delta){
-        List<PhysicsComponent> components = getComponents();
+        timeToSimulate += delta;
+        while(timeToSimulate > 0){
+            List<PhysicsComponent> components = getComponents();
 
-        for (PhysicsComponent c : components){
-            c.integrate(delta);
-        }
-
-        for (int i = 0; i < components.size() - 1; i++) {
-            for (int j = i + 1; j < components.size(); j++) {
-                
+            for (PhysicsComponent c : components){
+                c.integrate(delta);
             }
-        }
 
-        for (PhysicsComponent c : components){
-            c.apply();
+            for (int i = 0; i < components.size() - 1; i++) {
+                for (int j = i + 1; j < components.size(); j++) {
+
+                }
+            }
+
+            for (PhysicsComponent c : components){
+                c.apply();
+            }
+
+            timeToSimulate -= simulationTime;
         }
     }
 

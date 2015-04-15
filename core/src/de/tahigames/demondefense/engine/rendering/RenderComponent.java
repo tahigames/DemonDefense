@@ -24,7 +24,7 @@ public class RenderComponent extends Component implements Comparable<RenderCompo
     private float stateTime;
 
     public RenderComponent(TextureAtlas atlas, float frameTime, Layer layer){
-        this(atlas, atlas.getSheet().getWidth() / atlas.getCols(), atlas.getSheet().getHeight() / atlas.getRows(), frameTime, layer);
+        this(atlas, frameTime, atlas.getWidth(), atlas.getHeight(), layer);
     }
 
     public RenderComponent(TextureAtlas atlas, float frameTime, float width, float height, Layer layer){

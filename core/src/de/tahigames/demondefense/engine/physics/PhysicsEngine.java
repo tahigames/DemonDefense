@@ -22,6 +22,10 @@ public class PhysicsEngine extends Engine<PhysicsComponent> {
                 
             }
         }
+
+        for (PhysicsComponent c : components){
+            c.apply();
+        }
     }
 
 }

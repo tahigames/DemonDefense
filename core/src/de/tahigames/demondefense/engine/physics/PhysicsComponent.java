@@ -11,11 +11,23 @@ import de.tahigames.demondefense.engine.Entity;
  */
 public abstract class PhysicsComponent extends Component {
 
+    private Bounding bounding;
 
+    private Vector2 position;
     private Vector2 velocity;
 
-    public void integrate(float delta){
+    public PhysicsComponent(Bounding bounding){
+        this.bounding = bounding;
+    }
 
+    public void integrate(float delta){
+        position.set(getParent().getPosition());
+        position.add(velocity.x * delta, velocity.y * delta);
+        bounding.moveTo(position);
+    }
+
+    public void apply() {
+        getParent().getPosition().set(position);
     }
 
     public abstract void onCollisionWith(Entity e);

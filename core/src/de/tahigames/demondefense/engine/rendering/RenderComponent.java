@@ -23,34 +23,33 @@ public class RenderComponent extends Component implements Comparable<RenderCompo
     private Animation animation;
     private float stateTime;
 
-    public RenderComponent(TextureAtlas atlas, float timeBetweenFrames, Layer layer){
-        this(atlas, atlas.getSheet().getWidth() / atlas.getCols(), atlas.getSheet().getHeight() / atlas.getRows(), layer);
+    public RenderComponent(TextureAtlas atlas, float frameTime, Layer layer){
+        this(atlas, atlas.getSheet().getWidth() / atlas.getCols(), atlas.getSheet().getHeight() / atlas.getRows(), frameTime, layer);
     }
 
-    public RenderComponent(TextureAtlas atlas, float width, float height, Layer layer){
-        initAnimation(atlas);
+    public RenderComponent(TextureAtlas atlas, float frameTime, float width, float height, Layer layer){
+        initAnimation(atlas, frameTime);
 
         this.width = width;
         this.height = height;
         this.layer = layer;
     }
 
-    private void initAnimation(TextureAtlas atlas){
-        final int FRAME_COLS = 1;
-        final int FRAME_ROWS = 1;
-        final float timeBetweenFrames = 0.025f;
+    private void initAnimation(TextureAtlas atlas, float frameTime){
+        final int cols = atlas.getCols();
+        final int rows = atlas.getRows();
 
         final int width = atlas.getSheet().getWidth();
         final int height = atlas.getSheet().getHeight();
-        TextureRegion[][] tmp = TextureRegion.split(atlas.getSheet(), width/FRAME_COLS, height/FRAME_ROWS);
-        TextureRegion[] frames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
+        TextureRegion[][] tmp = TextureRegion.split(atlas.getSheet(), width/cols, height/rows);
+        TextureRegion[] frames = new TextureRegion[cols * rows];
         int index = 0;
-        for (int i = 0; i < FRAME_ROWS; i++) {
-            for (int j = 0; j < FRAME_COLS; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 frames[index++] = tmp[i][j];
             }
         }
-        animation = new Animation(timeBetweenFrames, frames);
+        animation = new Animation(frameTime, frames);
     }
 
     public void render(SpriteBatch batch, float delta){

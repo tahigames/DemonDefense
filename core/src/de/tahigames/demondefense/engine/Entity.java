@@ -11,6 +11,8 @@ public class Entity {
 
     private Core core;
 
+    private Entity parent;
+
     private ArrayList<Entity> entities;
     private ArrayList<Component> components;
 
@@ -26,11 +28,13 @@ public class Entity {
 
     public void addChild(Entity child){
         entities.add(child);
+        child.setParent(this);
         child.onAddToCore(core);
     }
 
     public void removeChild(Entity child){
         entities.remove(child);
+        child.setParent(null);
         child.onRemoveFromCore(core);
     }
 
@@ -79,6 +83,14 @@ public class Entity {
         component.setParent(null);
         if(core != null)
             component.onRemoveFromCore(core);
+    }
+
+    public void setParent(Entity parent) {
+        this.parent = parent;
+    }
+
+    public Entity getParent() {
+        return parent;
     }
 
     public Vector2 getPosition() {

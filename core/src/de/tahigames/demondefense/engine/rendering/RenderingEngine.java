@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import de.tahigames.demondefense.engine.Engine;
 
@@ -15,14 +17,17 @@ import de.tahigames.demondefense.engine.Engine;
  */
 public class RenderingEngine extends Engine<RenderComponent> {
 
+    private Viewport viewPort;
     private OrthographicCamera camera;
 
     private SpriteBatch batch;
 
     public RenderingEngine(){
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.update();
+        //camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        //camera.update();
+        viewPort = new FitViewport(800, 600, camera);
+        viewPort.apply();
         batch = new SpriteBatch();
     }
 
@@ -67,5 +72,7 @@ public class RenderingEngine extends Engine<RenderComponent> {
 
     }
 
-
+    public OrthographicCamera getCamera() {
+        return camera;
+    }
 }

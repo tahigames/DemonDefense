@@ -1,6 +1,7 @@
 package de.tahigames.demondefense.engine;
 
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Camera;
 
 /**
  * Created by Mirco on 14.04.2015.
@@ -8,6 +9,6 @@ import com.badlogic.gdx.Input;
 public abstract class Game {
 
     public abstract void init(Core core);
-    public abstract void handleInput(Input input);
+    public abstract void handleInput(Input input, Camera cam);
 
 }

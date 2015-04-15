@@ -1,5 +1,7 @@
 package de.tahigames.demondefense.engine;
 
+import com.badlogic.gdx.math.Vector2;
+
 import java.util.ArrayList;
 
 /**
@@ -12,11 +14,10 @@ public class Entity {
     private ArrayList<Entity> entities;
     private ArrayList<Component> components;
 
-    private float x, y;
+    private Vector2 position;
 
     public Entity(float x, float y) {
-        this.x = x;
-        this.y = y;
+        position = new Vector2(x, y);
 
         //consider lazy initialization?
         entities = new ArrayList<>();
@@ -80,11 +81,15 @@ public class Entity {
             component.onRemoveFromCore(core);
     }
 
+    public Vector2 getPosition() {
+        return position;
+    }
+
     public float getX() {
-        return x;
+        return position.x;
     }
 
     public float getY() {
-        return y;
+        return position.y;
     }
 }

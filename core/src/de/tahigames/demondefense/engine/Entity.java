@@ -60,7 +60,7 @@ public class Entity {
 
         if(core != null) {
             for (Component c : components) {
-                c.onAddToCore(core);
+                c.onRemoveFromCore(core);
             }
             for (Entity e : entities) {
                 e.onRemoveFromCore(core);

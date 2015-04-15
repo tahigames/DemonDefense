@@ -23,6 +23,10 @@ public class RenderComponent extends Component implements Comparable<RenderCompo
     private Animation animation;
     private float stateTime;
 
+    public RenderComponent(Texture texture, float width, float height, Layer layer){
+        this(new TextureAtlas(texture, 1, 1), 0, Animation.PlayMode.NORMAL, width, height, layer);
+    }
+
     public RenderComponent(TextureAtlas atlas, float frameTime,Animation.PlayMode playMode, Layer layer){
         this(atlas, frameTime, playMode, atlas.getWidth(), atlas.getHeight(), layer);
     }
@@ -56,8 +60,8 @@ public class RenderComponent extends Component implements Comparable<RenderCompo
     public void render(SpriteBatch batch, float delta){
         stateTime += delta;
         TextureRegion currentFrame = animation.getKeyFrame(stateTime);
-        float x = getParent().getX();
-        float y = getParent().getY();
+        float x = getParent().getX() - width / 2f;
+        float y = getParent().getY() - height / 2f;
         batch.draw(currentFrame, x, y, width, height);
     }
 

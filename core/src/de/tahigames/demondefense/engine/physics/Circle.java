@@ -18,7 +18,6 @@ public class Circle extends Bounding {
     @Override
     public void moveTo(Vector2 position) {
         center.set(position);
-        center.add(radius, radius);
     }
 
     public Vector2 getCenter() {

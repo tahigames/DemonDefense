@@ -35,9 +35,9 @@ public class PhysicsEngine extends Engine<PhysicsComponent> {
 
             //check for collisions and gather manifests
             manifests.clear();
-            for (int i = 0; i < components.size() - 1; i++) {
+            for (int i = components.size() - 1; i > 0; i--) {
                 PhysicsComponent comp1 = components.get(i);
-                for (int j = i + 1; j < components.size(); j++) {
+                for (int j = i - 1; j >= 0; j--) {
                     PhysicsComponent comp2 = components.get(j);
 
                     if(comp1.canCollideWith(comp2.getParent()) ||

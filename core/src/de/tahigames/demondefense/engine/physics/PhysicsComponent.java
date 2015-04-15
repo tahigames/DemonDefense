@@ -38,7 +38,7 @@ public abstract class PhysicsComponent extends Component {
     }
 
     public CollisionManifest testCollisionWith(PhysicsComponent other){
-        return new CollisionManifest(this, other, false);
+        return new CollisionManifest(this, other, Collider.areColliding(bounding, other.bounding));
     }
 
     public abstract boolean canCollideWith(Entity e);

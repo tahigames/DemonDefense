@@ -30,7 +30,21 @@ public abstract class PhysicsComponent extends Component {
         getParent().getPosition().set(position);
     }
 
+    public CollisionManifest testCollisionWith(PhysicsComponent other){
+        return new CollisionManifest(this, other, false);
+    }
+
+    public abstract boolean canCollideWith(Entity e);
+
     public abstract void onCollisionWith(Entity e);
+
+    public Bounding getBounding() {
+        return bounding;
+    }
+
+    public Vector2 getVelocity() {
+        return velocity;
+    }
 
     @Override
     public void onAddToCore(Core core) {

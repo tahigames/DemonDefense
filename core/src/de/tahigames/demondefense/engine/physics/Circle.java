@@ -20,4 +20,5 @@ public class Circle extends Bounding {
         center.set(position);
         center.add(radius, radius);
     }
+
 }

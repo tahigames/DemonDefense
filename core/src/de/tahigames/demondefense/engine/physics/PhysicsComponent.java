@@ -2,6 +2,8 @@ package de.tahigames.demondefense.engine.physics;
 
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.ArrayList;
+
 import de.tahigames.demondefense.engine.Core;
 import de.tahigames.demondefense.engine.Component;
 import de.tahigames.demondefense.engine.Entity;
@@ -16,8 +18,11 @@ public abstract class PhysicsComponent extends Component {
     private Vector2 position;
     private Vector2 velocity;
 
+    private ArrayList<PhysicsComponent> currentCollisions;
+
     public PhysicsComponent(Bounding bounding){
         this.bounding = bounding;
+        currentCollisions = new ArrayList<>();
     }
 
     public void integrate(float delta){
@@ -36,7 +41,25 @@ public abstract class PhysicsComponent extends Component {
 
     public abstract boolean canCollideWith(Entity e);
 
-    public abstract void onCollisionWith(Entity e);
+    public void onCollisionWith(Entity e){
+
+    }
+
+    void onStartCollidingWith(PhysicsComponent c){
+        currentCollisions.add(c);
+    }
+
+    void onStopCollidingWith(PhysicsComponent c){
+        currentCollisions.remove(c);
+    }
+
+    public boolean isCollidingWith(PhysicsComponent other){
+        return currentCollisions.contains(other);
+    }
+
+    public ArrayList<PhysicsComponent> getCurrentCollisions() {
+        return currentCollisions;
+    }
 
     public Bounding getBounding() {
         return bounding;

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.rendering.TextureAtlas;
 
 /**
  * Created by Marcel on 14.04.2015.
@@ -17,7 +18,8 @@ public class Map extends Entity {
     public Map(int cellsX, int cellsY) {
         super(0, 0);
         generateGrid(cellsX, cellsY);
-        selectRenderer = new RenderComponent(new Texture("testbox16selected.png"));
+        TextureAtlas atlas = new TextureAtlas(new Texture("testbox16selected.png"), 1, 1);
+        selectRenderer = new RenderComponent(atlas, 0, RenderComponent.Layer.Eight);
     }
 
     private void generateGrid(int cellsX, int cellsY){

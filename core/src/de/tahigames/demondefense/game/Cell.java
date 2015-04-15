@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.rendering.TextureAtlas;
+import de.tahigames.demondefense.game.towers.Tower;
 
 /**
  * Created by Marcel on 14.04.2015.
@@ -13,7 +15,8 @@ public class Cell extends Entity {
 
     public Cell(float x, float y) {
         super(x, y);
-        addComponent(new RenderComponent(new Texture("testbox16.png")));
+        TextureAtlas atlas = new TextureAtlas(new Texture("testbox16.png"), 1, 1);
+        addComponent(new RenderComponent(atlas, 0, RenderComponent.Layer.Nine));
     }
 
     public void placeTower(Tower tower){

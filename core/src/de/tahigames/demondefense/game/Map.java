@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.engine.rendering.TextureAtlas;
+import de.tahigames.demondefense.game.towers.BaseTower;
 
 /**
  * Created by Marcel on 14.04.2015.
@@ -52,6 +53,11 @@ public class Map extends Entity {
         if(selectedCell != null)
             selectedCell.removeComponent(selectRenderer);
         selectedCell = null;
+    }
+
+    public void placeTower(){
+        selectedCell.placeTower(new BaseTower());
+
     }
 
 }

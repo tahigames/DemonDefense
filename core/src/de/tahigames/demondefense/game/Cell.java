@@ -23,10 +23,13 @@ public class Cell extends Entity {
         if(this.tower != null)
             throw new IllegalStateException("Tower already exists");
         this.tower = tower;
+        this.tower.getPosition().set(getPosition());
+        addChild(this.tower);
     }
 
     public void removeTower(){
-        this.tower = null;
+        removeChild(tower);
+        tower = null;
     }
 
     public boolean isBlocked(){

@@ -1,5 +1,8 @@
 package de.tahigames.demondefense.game.towers;
 
+import com.badlogic.gdx.graphics.Texture;
+
+import de.tahigames.demondefense.engine.rendering.TextureAtlas;
 import de.tahigames.demondefense.game.TowerAttributes;
 
 /**
@@ -7,8 +10,8 @@ import de.tahigames.demondefense.game.TowerAttributes;
  */
 public class BaseTower extends  Tower{
 
-    public BaseTower(float x, float y) {
-        super(x, y, "Basis Turm");
+    public BaseTower() {
+        super("Basis Turm", new TextureAtlas(new Texture("tower01.png"), 1, 1), 0);
     }
 
     @Override

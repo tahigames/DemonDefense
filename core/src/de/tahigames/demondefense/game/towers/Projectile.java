@@ -15,7 +15,7 @@ import de.tahigames.demondefense.game.enemies.Enemy;
 public class Projectile extends Entity{
 
     private int damage;
-    private Entity target;
+    private Enemy target;
 
     public Projectile(float x, float y) {
         super(x, y);
@@ -23,8 +23,13 @@ public class Projectile extends Entity{
         addComponent(new RenderComponent(atlas, 0, RenderComponent.Layer.Four));
         PhysicsComponent physicsComp = new PhysicsComponent(new AaBb(getX(), getY(), getX() + atlas.getWidth(), getY() + atlas.getHeight())) {
             @Override
+            public boolean canCollideWith(Entity e) {
+                return e instanceof Enemy;
+            }
+
+            @Override
             public void onCollisionWith(Entity e) {
-                if(e instanceof Enemy && e == target){
+                if(e == target){
                     ((Enemy) e).getDamage(damage);
                     getParent().getParent().removeChild(getParent());
                 }

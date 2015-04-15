@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector3;
 
 import de.tahigames.demondefense.engine.Core;
 import de.tahigames.demondefense.engine.Game;
+import de.tahigames.demondefense.game.towers.BaseTower;
 
 /**
  * Created by Mirco on 14.04.2015.
@@ -26,6 +27,7 @@ public class DemonDefenseGame extends Game {
             Vector3 screenCoord = new Vector3(input.getX(), input.getY(), 0);
             Vector3 worldCoord = cam.unproject(screenCoord);
             map.selectCellAt(worldCoord.x, worldCoord.y);
+            map.placeTower();
             Gdx.app.log("Input", "X: " + input.getX() + " Y: " + input.getY());
         }
     }

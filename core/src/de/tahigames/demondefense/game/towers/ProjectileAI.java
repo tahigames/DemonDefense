@@ -1,7 +1,5 @@
 package de.tahigames.demondefense.game.towers;
 
-import javax.xml.stream.events.EntityReference;
-
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.ai.AIComponent;
 import de.tahigames.demondefense.engine.physics.PhysicsComponent;
@@ -11,7 +9,7 @@ import de.tahigames.demondefense.engine.physics.PhysicsComponent;
  */
 public class ProjectileAI extends AIComponent {
 
-    private static final float projectileSpeed = 5.0f;
+    private static final float PROJECTILE_SPEED = 5.0f;
     private PhysicsComponent physicsComponent;
     private Entity target;
 
@@ -26,8 +24,8 @@ public class ProjectileAI extends AIComponent {
 
         float length = (float) Math.sqrt(stepX * stepX + stepY * stepY);
 
-        stepX = (stepX / length) * projectileSpeed;
-        stepY = (stepY / length) * projectileSpeed;
+        stepX = (stepX / length) * PROJECTILE_SPEED;
+        stepY = (stepY / length) * PROJECTILE_SPEED;
 
 
         physicsComponent.getVelocity().set(stepX, stepY);

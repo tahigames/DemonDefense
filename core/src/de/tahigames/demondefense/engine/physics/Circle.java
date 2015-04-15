@@ -21,4 +21,11 @@ public class Circle extends Bounding {
         center.add(radius, radius);
     }
 
+    public Vector2 getCenter() {
+        return center;
+    }
+
+    public float getRadius() {
+        return radius;
+    }
 }

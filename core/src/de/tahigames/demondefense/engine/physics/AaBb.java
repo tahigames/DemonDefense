@@ -24,4 +24,12 @@ public class AaBb extends  Bounding {
         maxExtent.set(position);
         maxExtent.add(xDist,yDist);
     }
+
+    public Vector2 getMinExtent() {
+        return minExtent;
+    }
+
+    public Vector2 getMaxExtent() {
+        return maxExtent;
+    }
 }

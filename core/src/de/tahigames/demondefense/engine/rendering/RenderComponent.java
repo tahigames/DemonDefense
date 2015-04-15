@@ -9,19 +9,21 @@ import de.tahigames.demondefense.engine.Core;
 /**
  * Created by Mirco on 14.04.2015.
  */
-public class RenderComponent extends Component {
+public class RenderComponent extends Component implements Comparable<RenderComponent> {
 
     private Texture texture;
     private float width, height;
+    private float depth;
 
-    public RenderComponent(Texture texture) {
-        this(texture, texture.getWidth(), texture.getHeight());
+    public RenderComponent(Texture texture, float depth) {
+        this(texture, texture.getWidth(), texture.getHeight(), depth);
     }
 
-    public RenderComponent(Texture texture, float width, float height){
+    public RenderComponent(Texture texture, float width, float height, float depth){
         this.texture = texture;
         this.width = width;
         this.height = height;
+        this.depth = depth;
     }
 
     public void render(SpriteBatch batch){
@@ -38,5 +40,10 @@ public class RenderComponent extends Component {
     @Override
     public void onRemoveFromCore(Core core) {
         core.getRenderingEngine().removeComponent(this);
+    }
+
+    @Override
+    public int compareTo(RenderComponent o) {
+        return depth > o.depth ? 1 : depth < o.depth ? - 1 : 0;
     }
 }

@@ -10,6 +10,8 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.util.Collections;
+
 import de.tahigames.demondefense.engine.Engine;
 
 /**
@@ -39,11 +41,14 @@ public class RenderingEngine extends Engine<RenderComponent> {
         camera.update();
         batch.setProjectionMatrix(camera.combined);
 
+        Collections.sort(getComponents());
+
         batch.begin();
         for (RenderComponent c : getComponents()){
             c.render(batch);
         }
         batch.end();
+
     }
 
     //Temporary

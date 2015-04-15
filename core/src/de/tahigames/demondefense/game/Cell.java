@@ -1,6 +1,7 @@
 package de.tahigames.demondefense.game;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
@@ -15,8 +16,8 @@ public class Cell extends Entity {
 
     public Cell(float x, float y) {
         super(x, y);
-        TextureAtlas atlas = new TextureAtlas(new Texture("testbox16.png"), 1, 1);
-        addComponent(new RenderComponent(atlas, 0, RenderComponent.Layer.Nine));
+        TextureAtlas atlas = new TextureAtlas(new Texture("ground01.png"), 1, 1);
+        addComponent(new RenderComponent(atlas, 0, Animation.PlayMode.NORMAL, RenderComponent.Layer.Nine));
     }
 
     public void placeTower(Tower tower){

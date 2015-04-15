@@ -1,5 +1,7 @@
 package de.tahigames.demondefense.game.enemies;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
+
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.engine.rendering.TextureAtlas;
@@ -14,7 +16,7 @@ public class Enemy extends Entity {
     public Enemy(float x, float y, int health, TextureAtlas atlas, float frameTime) {
         super(x, y);
         this.health = health;
-        addComponent(new RenderComponent(atlas, frameTime, RenderComponent.Layer.Five));
+        addComponent(new RenderComponent(atlas, frameTime, Animation.PlayMode.LOOP, RenderComponent.Layer.Five));
     }
 
     public void getDamage(int damage){

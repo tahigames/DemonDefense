@@ -1,6 +1,7 @@
 package de.tahigames.demondefense.game;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
@@ -20,7 +21,7 @@ public class Map extends Entity {
         super(0, 0);
         generateGrid(cellsX, cellsY);
         TextureAtlas atlas = new TextureAtlas(new Texture("testbox16selected.png"), 1, 1);
-        selectRenderer = new RenderComponent(atlas, 0, RenderComponent.Layer.Eight);
+        selectRenderer = new RenderComponent(atlas, 0, Animation.PlayMode.NORMAL, RenderComponent.Layer.Eight);
     }
 
     private void generateGrid(int cellsX, int cellsY){

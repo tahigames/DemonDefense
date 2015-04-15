@@ -1,5 +1,7 @@
 package de.tahigames.demondefense.game.towers;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
+
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.physics.Circle;
 import de.tahigames.demondefense.engine.physics.PhysicsComponent;
@@ -25,7 +27,7 @@ public abstract class Tower extends Entity{
         level = 0;
         levels = new TowerAttributes[3];
         generateLevels(levels);
-        addComponent(new RenderComponent(atlas, frameTime, SIZE, SIZE, RenderComponent.Layer.Five));
+        addComponent(new RenderComponent(atlas, frameTime, Animation.PlayMode.NORMAL, SIZE, SIZE, RenderComponent.Layer.Five));
         PhysicsComponent physicsComponent = new PhysicsComponent(new Circle(getX(), getY(), levels[level].getRange())) {
             @Override
             public boolean canCollideWith(Entity e) {

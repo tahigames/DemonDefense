@@ -3,10 +3,16 @@ package de.tahigames.demondefense.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector3;
 
 import de.tahigames.demondefense.engine.Core;
+import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.Game;
+import de.tahigames.demondefense.engine.physics.AaBb;
+import de.tahigames.demondefense.engine.physics.PhysicsComponent;
+import de.tahigames.demondefense.engine.rendering.TextureAtlas;
+import de.tahigames.demondefense.game.enemies.Enemy;
 import de.tahigames.demondefense.game.towers.BaseTower;
 
 /**
@@ -19,6 +25,15 @@ public class DemonDefenseGame extends Game {
     public void init(Core core) {
         map = new Map(20, 20);
         core.getRoot().addChild(map);
+        TextureAtlas atlas = new TextureAtlas(new Texture("enemy02.png"), 2, 2);
+        Enemy enemy = new Enemy(40, 40, 400, atlas, 0.25f);
+        enemy.addComponent(new PhysicsComponent(new AaBb(enemy.getX(), enemy.getY(),enemy.getX()+atlas.getWidth(),enemy.getY()+atlas.getHeight())) {
+            @Override
+            public boolean canCollideWith(Entity e) {
+                return false;
+            }
+        });
+        map.addChild(enemy);
     }
 
     @Override

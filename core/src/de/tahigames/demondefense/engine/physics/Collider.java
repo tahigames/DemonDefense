@@ -14,8 +14,9 @@ public class Collider {
             return circleAndAaBb((Circle)b1, (AaBb) b2);
         if(b1 instanceof  AaBb && b2 instanceof  Circle)
             return circleAndAaBb((Circle)b2, (AaBb) b1);
-        return false;
-        //throw new IllegalArgumentException("The Bounding types are not supported yet!");
+        if(b1 instanceof AaBb && b2 instanceof  AaBb)
+            return aaBbAndAaBb((AaBb) b1, (AaBb) b2);
+        throw new IllegalArgumentException("The Bounding types are not supported yet!");
     }
 
     private static boolean circleAndAaBb(Circle c, AaBb a){
@@ -58,7 +59,10 @@ public class Collider {
     }
 
     private static boolean aaBbAndAaBb(AaBb a1, AaBb a2){
-        return false;
+        if(a1.getMaxExtent().x < a2.getMinExtent().x || a1.getMinExtent().x > a2.getMaxExtent().x) return false;
+        if(a1.getMaxExtent().y < a2.getMinExtent().y || a1.getMinExtent().y > a2.getMaxExtent().y) return false;
+
+        return true;
     }
 
     private static boolean circleAndCircle(Circle c1, Circle c2){

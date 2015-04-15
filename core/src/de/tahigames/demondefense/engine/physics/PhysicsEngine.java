@@ -30,13 +30,14 @@ public class PhysicsEngine extends Engine<PhysicsComponent> {
             //place components a step ahead in time
             for (PhysicsComponent c : components){
                 c.integrate(delta);
+                c.getCurrentCollisions().clear();
             }
 
             //check for collisions and gather manifests
             manifests.clear();
             for (int i = 0; i < components.size() - 1; i++) {
+                PhysicsComponent comp1 = components.get(i);
                 for (int j = i + 1; j < components.size(); j++) {
-                    PhysicsComponent comp1 = components.get(i);
                     PhysicsComponent comp2 = components.get(j);
 
                     if(comp1.canCollideWith(comp2.getParent()) ||

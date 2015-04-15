@@ -42,15 +42,6 @@ public abstract class PhysicsComponent extends Component {
     public abstract boolean canCollideWith(Entity e);
 
     public void onCollisionWith(Entity e){
-
-    }
-
-    void onStartCollidingWith(PhysicsComponent c){
-        currentCollisions.add(c);
-    }
-
-    void onStopCollidingWith(PhysicsComponent c){
-        currentCollisions.remove(c);
     }
 
     public boolean isCollidingWith(PhysicsComponent other){

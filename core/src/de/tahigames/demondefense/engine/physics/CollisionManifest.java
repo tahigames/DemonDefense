@@ -18,25 +18,17 @@ public class CollisionManifest {
 
     public void resolve(){
         if(!colliding){
-            if(comp1.isCollidingWith(comp2))
-                comp1.onStopCollidingWith(comp2.getParent());
-            if(comp2.isCollidingWith(comp1))
-                comp2.onStopCollidingWith(comp1.getParent());
             return;
         }
 
         if(comp1.canCollideWith(comp2.getParent())){
+            comp1.getCurrentCollisions().add(comp2);
             comp1.onCollisionWith(comp2.getParent());
-
-            if(!comp1.isCollidingWith(comp2))
-                comp1.onStartCollidingWith(comp2.getParent());
         }
 
         if(comp2.canCollideWith(comp1.getParent())){
+            comp2.getCurrentCollisions().add(comp1);
             comp2.onCollisionWith(comp1.getParent());
-
-            if(!comp2.isCollidingWith(comp1))
-                comp2.onStartCollidingWith(comp1.getParent());
         }
     }
 

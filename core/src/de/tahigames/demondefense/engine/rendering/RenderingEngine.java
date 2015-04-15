@@ -66,10 +66,10 @@ public class RenderingEngine extends Engine<RenderComponent> {
             camera.translate(3, 0, 0);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            camera.translate(0, 3, 0);
+            camera.translate(0, -3, 0);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            camera.translate(0, -3, 0);
+            camera.translate(0, 3, 0);
         }
 
 //        camera.zoom = MathUtils.clamp(camera.zoom, 0.1f, 100 / camera.viewportWidth);

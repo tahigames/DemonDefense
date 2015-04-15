@@ -23,19 +23,19 @@ public class RenderComponent extends Component implements Comparable<RenderCompo
     private Animation animation;
     private float stateTime;
 
-    public RenderComponent(TextureAtlas atlas, float frameTime, Layer layer){
-        this(atlas, frameTime, atlas.getWidth(), atlas.getHeight(), layer);
+    public RenderComponent(TextureAtlas atlas, float frameTime,Animation.PlayMode playMode, Layer layer){
+        this(atlas, frameTime, playMode, atlas.getWidth(), atlas.getHeight(), layer);
     }
 
-    public RenderComponent(TextureAtlas atlas, float frameTime, float width, float height, Layer layer){
-        initAnimation(atlas, frameTime);
+    public RenderComponent(TextureAtlas atlas, float frameTime, Animation.PlayMode playMode, float width, float height, Layer layer){
+        initAnimation(atlas, frameTime, playMode);
 
         this.width = width;
         this.height = height;
         this.layer = layer;
     }
 
-    private void initAnimation(TextureAtlas atlas, float frameTime){
+    private void initAnimation(TextureAtlas atlas, float frameTime, Animation.PlayMode playMode){
         final int cols = atlas.getCols();
         final int rows = atlas.getRows();
 
@@ -50,6 +50,7 @@ public class RenderComponent extends Component implements Comparable<RenderCompo
             }
         }
         animation = new Animation(frameTime, frames);
+        animation.setPlayMode(playMode);
     }
 
     public void render(SpriteBatch batch, float delta){

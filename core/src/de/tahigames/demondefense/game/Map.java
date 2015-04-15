@@ -31,11 +31,11 @@ public class Map extends Entity {
         }
     }
 
-    public Cell getCellAt(int x, int y){
-        return grid[x / cellSize][y / cellSize];
+    public Cell getCellAt(float x, float y){
+        return grid[(int) x / cellSize][(int) y / cellSize];
     }
 
-    public void selectCellAt(int x, int y){
+    public void selectCellAt(float x, float y){
         if(x >= getX() && x < getX() + cellSize * grid.length
                 && y >= getY() && y < getY() + cellSize * grid.length){
             if(selectedCell != null)

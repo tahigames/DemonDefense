@@ -22,6 +22,8 @@ public abstract class PhysicsComponent extends Component {
 
     public PhysicsComponent(Bounding bounding){
         this.bounding = bounding;
+        position = new Vector2();
+        velocity = new Vector2();
         currentCollisions = new ArrayList<>();
     }
 

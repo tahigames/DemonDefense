@@ -72,6 +72,6 @@ public class RenderComponent extends Component implements Comparable<RenderCompo
 
     @Override
     public int compareTo(RenderComponent o) {
-        return layer.compareTo(o.layer);
+        return -layer.compareTo(o.layer);
     }
 }

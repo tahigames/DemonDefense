@@ -23,7 +23,7 @@ public class DemonDefenseGame extends Game {
 
     @Override
     public void handleInput(Input input, Camera cam){
-        if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
+        if(Gdx.input.justTouched()){
             Vector3 screenCoord = new Vector3(input.getX(), input.getY(), 0);
             Vector3 worldCoord = cam.unproject(screenCoord);
             map.selectCellAt(worldCoord.x, worldCoord.y);

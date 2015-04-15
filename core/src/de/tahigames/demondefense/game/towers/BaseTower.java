@@ -16,8 +16,8 @@ public class BaseTower extends  Tower{
 
     @Override
     protected void generateLevels(TowerAttributes[] levels) {
-        levels[0] = new TowerAttributes(100, 100, 1, 200);
-        levels[1] = new TowerAttributes(100, 200, 1, 400);
-        levels[2] = new TowerAttributes(100, 300, 1, 700);
+        levels[0] = new TowerAttributes(32, 100, 0.25f, 200);
+        levels[1] = new TowerAttributes(32, 200, 1, 400);
+        levels[2] = new TowerAttributes(32, 300, 1, 700);
     }
 }

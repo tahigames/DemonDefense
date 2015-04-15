@@ -8,8 +8,8 @@ import de.tahigames.demondefense.engine.Engine;
 public class AIEngine extends Engine<AIComponent> {
 
     public void think(float delta) {
-        for (AIComponent c : getComponents()){
-            c.think(delta);
+        for (int i = getComponents().size() - 1; i >= 0; i--) {
+            getComponents().get(i).think(delta);
         }
     }
 

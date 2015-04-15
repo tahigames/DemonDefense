@@ -16,9 +16,8 @@ import de.tahigames.demondefense.game.enemies.Enemy;
 public class Projectile extends Entity{
 
     private int damage;
-    private Enemy target;
 
-    public Projectile(float x, float y) {
+    public Projectile(float x, float y, final Enemy target) {
         super(x, y);
         TextureAtlas atlas = new TextureAtlas(new Texture("projectile01.png"), 1, 1);
         addComponent(new RenderComponent(atlas, 0, Animation.PlayMode.NORMAL, RenderComponent.Layer.Four));
@@ -33,6 +32,7 @@ public class Projectile extends Entity{
                 if(e == target){
                     ((Enemy) e).getDamage(damage);
                     getParent().getParent().removeChild(getParent());
+                    System.out.println("enemy hit");
                 }
             }
         };

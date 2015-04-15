@@ -9,12 +9,13 @@ import de.tahigames.demondefense.engine.physics.PhysicsComponent;
  */
 public class ProjectileAI extends AIComponent {
 
-    private static final float PROJECTILE_SPEED = 5.0f;
+    private static final float PROJECTILE_SPEED = 16.0f;
     private PhysicsComponent physicsComponent;
     private Entity target;
 
     public ProjectileAI(PhysicsComponent physicsComponent, Entity target){
         this.physicsComponent = physicsComponent;
+        this.target = target;
     }
 
     @Override
@@ -29,6 +30,5 @@ public class ProjectileAI extends AIComponent {
 
 
         physicsComponent.getVelocity().set(stepX, stepY);
-
     }
 }

@@ -28,7 +28,7 @@ public class Map extends Entity {
         grid = new Cell[cellsX][cellsY];
         for (int x = 0; x < cellsX; x++) {
             for (int y = 0; y < cellsY; y++) {
-                Cell cell = new Cell(x * cellSize, y * cellSize);
+                Cell cell = new Cell(x * cellSize + cellSize / 2f, y * cellSize + cellSize / 2f);
                 grid[x][y] = cell;
                 addChild(cell);
             }
@@ -36,12 +36,14 @@ public class Map extends Entity {
     }
 
     public Cell getCellAt(float x, float y){
-        return grid[(int) x / cellSize][(int) y / cellSize];
+        return grid[(int) (x / cellSize)][(int) (y / cellSize)];
     }
 
     public void selectCellAt(float x, float y){
-        if(x >= getX() && x < getX() + cellSize * grid.length
-                && y >= getY() && y < getY() + cellSize * grid.length){
+        float halfMapWidth = cellSize * grid.length;
+        float halfMapHeight = cellSize * grid[0].length;
+        if(x >= getX() - halfMapWidth && x < getX() + halfMapWidth
+                && y >= getY() - halfMapHeight && y < getY() + halfMapHeight){
             if(selectedCell != null)
                 selectedCell.removeComponent(selectRenderer);
             selectedCell = getCellAt(x, y);

@@ -27,12 +27,6 @@ public class DemonDefenseGame extends Game {
         core.getRoot().addChild(map);
         TextureAtlas atlas = new TextureAtlas(new Texture("enemy02.png"), 2, 2);
         Enemy enemy = new Enemy(40, 40, 400, atlas, 0.25f);
-        enemy.addComponent(new PhysicsComponent(new AaBb(enemy.getX(), enemy.getY(),enemy.getX()+atlas.getWidth(),enemy.getY()+atlas.getHeight())) {
-            @Override
-            public boolean canCollideWith(Entity e) {
-                return false;
-            }
-        });
         map.addChild(enemy);
     }
 

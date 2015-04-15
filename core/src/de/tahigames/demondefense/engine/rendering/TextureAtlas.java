@@ -21,6 +21,14 @@ public class TextureAtlas {
         return sheet;
     }
 
+    public float getWidth() {
+        return (float) sheet.getWidth() / cols;
+    }
+
+    public float getHeight(){
+        return (float) sheet.getHeight() / rows;
+    }
+
     public int getCols() {
         return cols;
     }

@@ -11,19 +11,23 @@ import de.tahigames.demondefense.engine.Core;
  */
 public class RenderComponent extends Component implements Comparable<RenderComponent> {
 
-    private Texture texture;
-    private float width, height;
-    private float depth;
-
-    public RenderComponent(Texture texture, float depth) {
-        this(texture, texture.getWidth(), texture.getHeight(), depth);
+    public static  enum Layer {
+        Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine;
     }
 
-    public RenderComponent(Texture texture, float width, float height, float depth){
+    private Texture texture;
+    private float width, height;
+    private Layer layer;
+
+    public RenderComponent(Texture texture, Layer layer) {
+        this(texture, texture.getWidth(), texture.getHeight(), layer);
+    }
+
+    public RenderComponent(Texture texture, float width, float height, Layer layer){
         this.texture = texture;
         this.width = width;
         this.height = height;
-        this.depth = depth;
+        this.layer = layer;
     }
 
     public void render(SpriteBatch batch){
@@ -44,6 +48,6 @@ public class RenderComponent extends Component implements Comparable<RenderCompo
 
     @Override
     public int compareTo(RenderComponent o) {
-        return depth > o.depth ? 1 : depth < o.depth ? - 1 : 0;
+        return layer.compareTo(o.layer);
     }
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 import java.util.ArrayList;
 
+import de.tahigames.demondefense.engine.ai.AIEngine;
 import de.tahigames.demondefense.engine.physics.PhysicsEngine;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.engine.rendering.RenderingEngine;
@@ -18,6 +19,7 @@ public class Core {
 
     private RenderingEngine renderingEngine;
     private PhysicsEngine physicsEngine;
+    private AIEngine aiEngine;
 
     private Entity root;
 
@@ -25,6 +27,7 @@ public class Core {
         this.game = game;
         renderingEngine = new RenderingEngine();
         physicsEngine = new PhysicsEngine();
+        aiEngine = new AIEngine();
 
         root = new Entity(0,0);
         root.setCore(this);
@@ -50,5 +53,9 @@ public class Core {
 
     public PhysicsEngine getPhysicsEngine() {
         return physicsEngine;
+    }
+
+    public AIEngine getAiEngine() {
+        return aiEngine;
     }
 }

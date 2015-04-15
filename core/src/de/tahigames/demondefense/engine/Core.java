@@ -41,7 +41,7 @@ public class Core {
         game.handleInput(Gdx.input, renderingEngine.getCamera());
         aiEngine.think(delta);
         physicsEngine.simulate(delta);
-        renderingEngine.render();
+        renderingEngine.render(delta);
     }
 
     public Entity getRoot() {

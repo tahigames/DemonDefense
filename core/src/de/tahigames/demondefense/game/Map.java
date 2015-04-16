@@ -20,8 +20,7 @@ public class Map extends Entity {
     public Map(int cellsX, int cellsY) {
         super(0, 0);
         generateGrid(cellsX, cellsY);
-        TextureAtlas atlas = new TextureAtlas(new Texture("testbox16selected.png"), 1, 1);
-        selectRenderer = new RenderComponent(atlas, 0, Animation.PlayMode.NORMAL, RenderComponent.Layer.Eight);
+        selectRenderer = new RenderComponent(new Texture("testbox16selected.png"), Cell.SIZE, Cell.SIZE, RenderComponent.Layer.Eight);
     }
 
     private void generateGrid(int cellsX, int cellsY){

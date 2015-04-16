@@ -14,14 +14,16 @@ import de.tahigames.demondefense.game.towers.Projectile;
  */
 public class Enemy extends Entity {
 
+    public static final int SIZE = 16;
+
     private int health;
 
-    public Enemy(float x, float y, int health, TextureAtlas atlas, float frameTime) {
+    public Enemy(float x, float y, int health, RenderComponent renderComponent) {
         super(x, y);
         this.health = health;
-        addComponent(new RenderComponent(atlas, frameTime, Animation.PlayMode.LOOP, RenderComponent.Layer.Five));
-        float halfWidth = atlas.getWidth() / 2;
-        float halfHeight = atlas.getHeight() / 2;
+        addComponent(renderComponent);
+        float halfWidth = SIZE / 2;
+        float halfHeight = SIZE / 2;
         addComponent(new PhysicsComponent(new AaBb(getX() - halfWidth, getY() - halfHeight, getX() + halfWidth, getY() + halfHeight)) {
             @Override
             public boolean canCollideWith(Entity e) {

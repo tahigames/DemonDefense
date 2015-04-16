@@ -12,12 +12,14 @@ import de.tahigames.demondefense.game.towers.Tower;
  * Created by Marcel on 14.04.2015.
  */
 public class Cell extends Entity {
+
+    public static final int SIZE = 16;
+
     private Tower tower;
 
     public Cell(float x, float y) {
         super(x, y);
-        TextureAtlas atlas = new TextureAtlas(new Texture("ground01.png"), 1, 1);
-        addComponent(new RenderComponent(atlas, 0, Animation.PlayMode.NORMAL, RenderComponent.Layer.Nine));
+        addComponent(new RenderComponent(new Texture("ground01.png"), SIZE, SIZE, RenderComponent.Layer.Nine));
     }
 
     public void placeTower(Tower tower){

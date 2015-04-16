@@ -21,13 +21,13 @@ public abstract class Tower extends Entity{
     private int level;
     private TowerAttributes[] levels;
 
-    public Tower(String name, TextureAtlas atlas, float frameTime) {
+    public Tower(String name, RenderComponent renderComponent) {
         super(0, 0);
         this.name = name;
         level = 0;
         levels = new TowerAttributes[3];
         generateLevels(levels);
-        addComponent(new RenderComponent(atlas, frameTime, Animation.PlayMode.NORMAL, SIZE, SIZE, RenderComponent.Layer.Five));
+        addComponent(renderComponent);
         PhysicsComponent physicsComponent = new PhysicsComponent(new Circle(getX(), getY(), levels[level].getRange())) {
             @Override
             public boolean canCollideWith(Entity e) {

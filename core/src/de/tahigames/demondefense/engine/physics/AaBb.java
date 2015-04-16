@@ -19,13 +19,13 @@ public class AaBb extends  Bounding {
 
     @Override
     public void moveTo(Vector2 position) {
-        float xDist = maxExtent.x - minExtent.x;
-        float yDist = maxExtent.y - minExtent.y;
+        float width = getWidth();
+        float height = getHeight();
 
         minExtent.set(position);
         maxExtent.set(position);
-        minExtent.sub(xDist/2, yDist/2);
-        maxExtent.add(xDist/2, yDist/2);
+        minExtent.sub(width / 2, height / 2);
+        maxExtent.add(width / 2, height / 2);
     }
 
     public Vector2 getMinExtent() {

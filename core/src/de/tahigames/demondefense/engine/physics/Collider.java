@@ -46,7 +46,7 @@ public class Collider {
             return true;
 
         //center
-        point.set(a.getMinExtent().add(a.getMaxExtent())).scl(0.5f);
+        point.set(a.getMinExtent()).add(a.getMaxExtent()).scl(0.5f);
         if(insideCircle(c, point))
             return true;
         return false;

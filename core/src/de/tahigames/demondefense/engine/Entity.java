@@ -61,8 +61,6 @@ public class Entity {
         this.core = null;
 
         if(core != null) {
-            if(this instanceof Projectile)
-                System.out.println("Removing Projectile from game");
             for (Component c : components) {
                 c.onRemoveFromCore(core);
             }

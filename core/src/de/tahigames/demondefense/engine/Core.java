@@ -1,13 +1,10 @@
 package de.tahigames.demondefense.engine;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-
-import java.util.ArrayList;
+import com.badlogic.gdx.graphics.FPSLogger;
 
 import de.tahigames.demondefense.engine.ai.AIEngine;
 import de.tahigames.demondefense.engine.physics.PhysicsEngine;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.engine.rendering.RenderingEngine;
 
 /**
@@ -23,6 +20,8 @@ public class Core {
 
     private Entity root;
 
+    private FPSLogger fpsLogger;
+
     public Core(Game game){
         this.game = game;
         renderingEngine = new RenderingEngine();
@@ -31,6 +30,8 @@ public class Core {
 
         root = new Entity(0,0);
         root.setCore(this);
+
+        fpsLogger = new FPSLogger();
 
         game.init(this);
     }
@@ -42,6 +43,8 @@ public class Core {
         aiEngine.think(delta);
         physicsEngine.simulate(delta);
         renderingEngine.render(delta);
+
+        fpsLogger.log();
     }
 
     public Entity getRoot() {

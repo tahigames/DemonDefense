@@ -7,9 +7,19 @@ public abstract class Component {
 
     private Entity parent;
 
-    public abstract void onAddToCore(Core core);
+    private boolean connectedToCore;
 
-    public abstract void onRemoveFromCore(Core core);
+    public void onAddToCore(Core core){
+        connectedToCore = true;
+    }
+
+    public void onRemoveFromCore(Core core){
+        connectedToCore = false;
+    }
+
+    public boolean isConnectedToCore() {
+        return connectedToCore;
+    }
 
     public void setParent(Entity parent) {
         this.parent = parent;

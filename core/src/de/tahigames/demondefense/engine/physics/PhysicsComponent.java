@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import de.tahigames.demondefense.engine.Core;
 import de.tahigames.demondefense.engine.Component;
 import de.tahigames.demondefense.engine.Entity;
+import de.tahigames.demondefense.engine.rendering.ShapeRenderComponent;
+import de.tahigames.demondefense.engine.rendering.DrawComponent;
 
 /**
  * Created by Mirco on 14.04.2015.
@@ -19,6 +21,8 @@ public abstract class PhysicsComponent extends Component {
     private Vector2 velocity;
 
     private ArrayList<PhysicsComponent> currentCollisions;
+
+    private ShapeRenderComponent debugComponent;
 
     public PhysicsComponent(Bounding bounding){
         this.bounding = bounding;
@@ -62,13 +66,27 @@ public abstract class PhysicsComponent extends Component {
         return velocity;
     }
 
+    public void enableDebugging(DrawComponent.Layer layer){
+        if(debugComponent == null){
+            debugComponent = new ShapeRenderComponent(layer, bounding);
+            if(isConnectedToCore())
+                getParent().addComponent(debugComponent);
+        }
+    }
+
     @Override
     public void onAddToCore(Core core) {
+        super.onAddToCore(core);
+        if(debugComponent != null)
+            getParent().addComponent(debugComponent);
         core.getPhysicsEngine().addComponent(this);
     }
 
     @Override
     public void onRemoveFromCore(Core core) {
+        super.onRemoveFromCore(core);
+        if(debugComponent != null)
+            getParent().removeComponent(debugComponent);
         core.getPhysicsEngine().removeComponent(this);
     }
 }

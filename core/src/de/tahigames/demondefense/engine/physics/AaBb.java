@@ -1,5 +1,7 @@
 package de.tahigames.demondefense.engine.physics;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -32,5 +34,21 @@ public class AaBb extends  Bounding {
 
     public Vector2 getMaxExtent() {
         return maxExtent;
+    }
+
+
+    @Override
+    public float getWidth() {
+        return maxExtent.x - minExtent.x;
+    }
+
+    @Override
+    public float getHeight() {
+        return maxExtent.y - minExtent.y;
+    }
+
+    @Override
+    public void render(ShapeRenderer shapeRenderer, float delta) {
+        shapeRenderer.rect(minExtent.x, minExtent.y, getWidth(), getHeight());
     }
 }

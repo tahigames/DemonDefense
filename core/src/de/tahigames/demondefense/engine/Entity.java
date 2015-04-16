@@ -48,11 +48,11 @@ public class Entity {
         this.core = core;
 
         if(core != null) {
-            for (Component c : components) {
-                c.onAddToCore(core);
+            for (int i = components.size() - 1; i >= 0; i--) {
+                components.get(i).onAddToCore(core);
             }
-            for (Entity e : entities){
-                e.onAddToCore(core);
+            for (int i = entities.size() - 1; i >= 0; i--) {
+                entities.get(i).onAddToCore(core);
             }
         }
     }

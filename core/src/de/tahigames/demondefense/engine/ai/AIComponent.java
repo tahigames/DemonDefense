@@ -12,11 +12,13 @@ public abstract class AIComponent extends Component {
 
     @Override
     public void onAddToCore(Core core) {
+        super.onAddToCore(core);
         core.getAiEngine().addComponent(this);
     }
 
     @Override
     public void onRemoveFromCore(Core core) {
+        super.onRemoveFromCore(core);
         core.getAiEngine().removeComponent(this);
     }
 }

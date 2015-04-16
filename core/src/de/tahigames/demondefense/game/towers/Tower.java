@@ -1,12 +1,10 @@
 package de.tahigames.demondefense.game.towers;
 
-import com.badlogic.gdx.graphics.g2d.Animation;
-
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.physics.Circle;
 import de.tahigames.demondefense.engine.physics.PhysicsComponent;
+import de.tahigames.demondefense.engine.rendering.DrawComponent;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
-import de.tahigames.demondefense.engine.rendering.TextureAtlas;
 import de.tahigames.demondefense.game.TowerAttributes;
 import de.tahigames.demondefense.game.enemies.Enemy;
 
@@ -21,7 +19,7 @@ public abstract class Tower extends Entity{
     private int level;
     private TowerAttributes[] levels;
 
-    public Tower(String name, RenderComponent renderComponent) {
+    public Tower(String name, DrawComponent renderComponent) {
         super(0, 0);
         this.name = name;
         level = 0;
@@ -38,6 +36,7 @@ public abstract class Tower extends Entity{
             public void onCollisionWith(Entity e) {
             }
         };
+        physicsComponent.enableDebugging(RenderComponent.Layer.Eight);
         addComponent(physicsComponent);
         addComponent(new TowerAI(physicsComponent, this));
     }

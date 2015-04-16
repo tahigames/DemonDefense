@@ -19,6 +19,7 @@ public class TowerAI extends AIComponent{
     public TowerAI(PhysicsComponent physicsComponent, Tower tower){
         this.physicsComponent = physicsComponent;
         this.tower = tower;
+        passedTime = 1f / tower.getAttributes(tower.getLevel()).getAttackSpeed();
     }
 
     @Override
@@ -31,7 +32,7 @@ public class TowerAI extends AIComponent{
         //überprüfe ob schießbereit
         float attackSpeed = tower.getAttributes(tower.getLevel()).getAttackSpeed();
 
-        if(passedTime<= (1 / attackSpeed))
+        if(passedTime < (1 / attackSpeed))
             passedTime += delta;
 
         if(target != null){

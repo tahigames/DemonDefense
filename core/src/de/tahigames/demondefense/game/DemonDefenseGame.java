@@ -8,14 +8,10 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.Vector3;
 
 import de.tahigames.demondefense.engine.Core;
-import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.Game;
-import de.tahigames.demondefense.engine.physics.AaBb;
-import de.tahigames.demondefense.engine.physics.PhysicsComponent;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.rendering.DrawComponent;
 import de.tahigames.demondefense.engine.rendering.TextureAtlas;
 import de.tahigames.demondefense.game.enemies.Enemy;
-import de.tahigames.demondefense.game.towers.BaseTower;
 
 /**
  * Created by Mirco on 14.04.2015.
@@ -28,7 +24,7 @@ public class DemonDefenseGame extends Game {
         map = new Map(20, 20);
         core.getRoot().addChild(map);
         TextureAtlas atlas = new TextureAtlas(new Texture("enemy02.png"), 2, 2);
-        Enemy enemy = new Enemy(40, 40, 400, new RenderComponent(atlas, 0.25f, Animation.PlayMode.LOOP, RenderComponent.Layer.Five));
+        Enemy enemy = new Enemy(40, 40, 400, new DrawComponent(atlas, 0.25f, Animation.PlayMode.LOOP, DrawComponent.Layer.Five));
         map.addChild(enemy);
     }
 

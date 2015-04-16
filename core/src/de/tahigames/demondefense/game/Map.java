@@ -1,11 +1,9 @@
 package de.tahigames.demondefense.game;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 
 import de.tahigames.demondefense.engine.Entity;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
-import de.tahigames.demondefense.engine.rendering.TextureAtlas;
+import de.tahigames.demondefense.engine.rendering.DrawComponent;
 import de.tahigames.demondefense.game.towers.BaseTower;
 
 /**
@@ -15,12 +13,12 @@ public class Map extends Entity {
     public static final int cellSize = 16;
     private Cell[][] grid;
     private Cell selectedCell;
-    private RenderComponent selectRenderer;
+    private DrawComponent selectRenderer;
 
     public Map(int cellsX, int cellsY) {
         super(0, 0);
         generateGrid(cellsX, cellsY);
-        selectRenderer = new RenderComponent(new Texture("testbox16selected.png"), Cell.SIZE, Cell.SIZE, RenderComponent.Layer.Eight);
+        selectRenderer = new DrawComponent(new Texture("testbox16selected.png"), Cell.SIZE, Cell.SIZE, DrawComponent.Layer.Eight);
     }
 
     private void generateGrid(int cellsX, int cellsY){

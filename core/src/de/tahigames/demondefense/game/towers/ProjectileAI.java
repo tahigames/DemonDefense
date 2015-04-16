@@ -9,7 +9,7 @@ import de.tahigames.demondefense.engine.physics.PhysicsComponent;
  */
 public class ProjectileAI extends AIComponent {
 
-    private static final float PROJECTILE_SPEED = 16.0f;
+    private static final float PROJECTILE_SPEED = 128.0f;
     private PhysicsComponent physicsComponent;
     private Entity target;
 

@@ -25,11 +25,6 @@ public class CollisionManifest {
             comp1.getCurrentCollisions().add(comp2);
             comp1.onCollisionWith(comp2.getParent());
         }
-
-        if(comp2.canCollideWith(comp1.getParent())){
-            comp2.getCurrentCollisions().add(comp1);
-            comp2.onCollisionWith(comp1.getParent());
-        }
     }
 
     public boolean colliding(){

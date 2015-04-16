@@ -34,17 +34,16 @@ public class PhysicsEngine extends Engine<PhysicsComponent> {
             }
 
             //check for collisions and gather manifests
+            //very bad collision code!
+            //TODO dont test everything with everything...
             manifests.clear();
-            for (int i = components.size() - 1; i > 0; i--) {
+            for (int i = 0; i < components.size(); i++) {
                 PhysicsComponent comp1 = components.get(i);
-                for (int j = i - 1; j >= 0; j--) {
+                for (int j = 0; j < components.size(); j++) {
                     PhysicsComponent comp2 = components.get(j);
 
-                    if(comp1.canCollideWith(comp2.getParent()) ||
-                       comp2.canCollideWith(comp1.getParent())){
-                        CollisionManifest m = comp1.testCollisionWith(comp2);
-                        manifests.add(m);
-                    }
+                    if(comp1.canCollideWith(comp2.getParent()))
+                        manifests.add(comp1.testCollisionWith(comp2));
                 }
             }
 

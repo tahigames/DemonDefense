@@ -25,7 +25,7 @@ public class Enemy extends Entity {
         addComponent(new PhysicsComponent(new AaBb(getX() - halfWidth, getY() - halfHeight, getX() + halfWidth, getY() + halfHeight)) {
             @Override
             public boolean canCollideWith(Entity e) {
-                return e instanceof Projectile;
+                return false;
             }
         });
     }

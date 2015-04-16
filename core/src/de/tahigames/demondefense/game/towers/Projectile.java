@@ -3,6 +3,7 @@ package de.tahigames.demondefense.game.towers;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 
+import de.tahigames.demondefense.engine.Core;
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.physics.AaBb;
 import de.tahigames.demondefense.engine.physics.PhysicsComponent;
@@ -32,11 +33,16 @@ public class Projectile extends Entity{
                 if(e == target){
                     ((Enemy) e).getDamage(damage);
                     getParent().getParent().removeChild(getParent());
-                    System.out.println("enemy hit");
                 }
             }
         };
         addComponent(physicsComp);
         addComponent(new ProjectileAI(physicsComp, target));
+    }
+
+    @Override
+    public void onRemoveFromCore(Core core) {
+        super.onRemoveFromCore(core);
+        System.out.println("Remove projectile from core.");
     }
 }

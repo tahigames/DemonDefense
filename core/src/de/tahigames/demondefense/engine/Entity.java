@@ -4,6 +4,8 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
 
+import de.tahigames.demondefense.game.towers.Projectile;
+
 /**
  * Created by Mirco on 14.04.2015.
  */
@@ -34,8 +36,8 @@ public class Entity {
 
     public void removeChild(Entity child){
         entities.remove(child);
-        child.setParent(null);
         child.onRemoveFromCore(core);
+        child.setParent(null);
     }
 
     void setCore(Core core){
@@ -59,6 +61,8 @@ public class Entity {
         this.core = null;
 
         if(core != null) {
+            if(this instanceof Projectile)
+                System.out.println("Removing Projectile from game");
             for (Component c : components) {
                 c.onRemoveFromCore(core);
             }

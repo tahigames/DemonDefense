@@ -20,7 +20,7 @@ public class Projectile extends Entity{
 
     public Projectile(float x, float y, final Enemy target) {
         super(x, y);
-        TextureAtlas atlas = new TextureAtlas(new Texture("projectile01.png"), 1, 1);
+        TextureAtlas atlas = new TextureAtlas(new Texture("towers/projectiles/projectile01.png"), 1, 1);
         addComponent(new DrawComponent(atlas, 0, Animation.PlayMode.NORMAL, DrawComponent.Layer.Four));
         PhysicsComponent physicsComp = new PhysicsComponent(new AaBb(getX(), getY(), getX() + atlas.getWidth(), getY() + atlas.getHeight())) {
             @Override

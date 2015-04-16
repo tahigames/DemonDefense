@@ -11,7 +11,7 @@ import de.tahigames.demondefense.game.TowerAttributes;
 public class BaseTower extends  Tower{
 
     public BaseTower() {
-        super("Basis Turm", new DrawComponent(new Texture("tower01.png"), SIZE, SIZE, DrawComponent.Layer.Five));
+        super("Basis Turm", new DrawComponent(new Texture("towers/tower01.png"), SIZE, SIZE, DrawComponent.Layer.Five));
     }
 
     @Override

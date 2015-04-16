@@ -17,7 +17,7 @@ public class Cell extends Entity {
 
     public Cell(float x, float y) {
         super(x, y);
-        addComponent(new DrawComponent(new Texture("ground01.png"), SIZE, SIZE, DrawComponent.Layer.Nine));
+        addComponent(new DrawComponent(new Texture("cells/ground01.png"), SIZE, SIZE, DrawComponent.Layer.Nine));
     }
 
     public void placeTower(Tower tower){

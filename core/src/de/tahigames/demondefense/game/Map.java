@@ -18,7 +18,7 @@ public class Map extends Entity {
     public Map(int cellsX, int cellsY) {
         super(0, 0);
         generateGrid(cellsX, cellsY);
-        selectRenderer = new DrawComponent(new Texture("testbox16selected.png"), Cell.SIZE, Cell.SIZE, DrawComponent.Layer.Eight);
+        selectRenderer = new DrawComponent(new Texture("cells/testbox16selected.png"), Cell.SIZE, Cell.SIZE, DrawComponent.Layer.Eight);
     }
 
     private void generateGrid(int cellsX, int cellsY){

@@ -23,7 +23,7 @@ public class DemonDefenseGame extends Game {
     public void init(Core core) {
         map = new Map(20, 20);
         core.getRoot().addChild(map);
-        TextureAtlas atlas = new TextureAtlas(new Texture("enemy02.png"), 2, 2);
+        TextureAtlas atlas = new TextureAtlas(new Texture("enemies/enemy02.png"), 2, 2);
         Enemy enemy = new Enemy(40, 40, 400, new DrawComponent(atlas, 0.25f, Animation.PlayMode.LOOP, DrawComponent.Layer.Five));
         map.addChild(enemy);
     }

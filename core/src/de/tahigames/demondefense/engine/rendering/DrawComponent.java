@@ -50,6 +50,7 @@ public class DrawComponent extends RenderComponent {
         }
         animation = new Animation(frameTime, frames);
         animation.setPlayMode(playMode);
+
     }
 
     public void render(SpriteBatch batch, float delta){

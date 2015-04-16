@@ -39,10 +39,4 @@ public class Projectile extends Entity{
         addComponent(physicsComp);
         addComponent(new ProjectileAI(physicsComp, target));
     }
-
-    @Override
-    public void onRemoveFromCore(Core core) {
-        super.onRemoveFromCore(core);
-        System.out.println("Remove projectile from core.");
-    }
 }

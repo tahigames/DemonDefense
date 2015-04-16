@@ -24,10 +24,11 @@ public class TowerAI extends AIComponent{
 
     @Override
     public void think(float delta) {
-        //bestimme ziel
         List<PhysicsComponent> collisions = physicsComponent.getCurrentCollisions();
+
+        //bestimme ziel
         if(target == null || !contains(collisions, target)){
-            determineTarget(collisions);
+            determineNewTarget(collisions);
         }
         //überprüfe ob schießbereit
         float attackSpeed = tower.getAttributes(tower.getLevel()).getAttackSpeed();
@@ -43,7 +44,8 @@ public class TowerAI extends AIComponent{
         }
     }
 
-    private void determineTarget(List<PhysicsComponent> collisions){
+    private void determineNewTarget(List<PhysicsComponent> collisions){
+        target = null;
         float min = Float.MAX_VALUE;
         for (PhysicsComponent c : collisions){
             float stepX = c.getParent().getX() - getParent().getX();

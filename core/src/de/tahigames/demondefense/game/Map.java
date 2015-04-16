@@ -37,16 +37,15 @@ public class Map extends Entity {
     }
 
     public void selectCellAt(float x, float y){
-        float halfMapWidth = cellSize * grid.length;
-        float halfMapHeight = cellSize * grid[0].length;
-        if(x >= getX() - halfMapWidth && x < getX() + halfMapWidth
-                && y >= getY() - halfMapHeight && y < getY() + halfMapHeight){
+        float mapWidth = cellSize * grid.length;
+        float mapHeight = cellSize * grid[0].length;
+        if(x >= getX() && x < getX() + mapWidth
+                && y >= getY() && y < getY() + mapHeight){
             if(selectedCell != null)
                 selectedCell.removeComponent(selectRenderer);
             selectedCell = getCellAt(x, y);
             selectedCell.addComponent(selectRenderer);
         }
-
     }
 
     public void deselectCell(){
@@ -56,8 +55,9 @@ public class Map extends Entity {
     }
 
     public void placeTower(){
-        selectedCell.placeTower(new BaseTower());
-
+        if(selectedCell != null)
+            selectedCell.placeTower(new BaseTower());
+        selectedCell = null;
     }
 
 }

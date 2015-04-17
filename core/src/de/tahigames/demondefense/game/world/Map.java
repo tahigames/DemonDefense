@@ -21,7 +21,7 @@ public class Map extends Entity {
         super(0, 0);
         validateCellCount(cellsX, cellsY);
         generateGrid(cellsX, cellsY);
-        selectRenderer = new DrawComponent(new Texture("cells/testbox16selected.png"), Cell.SIZE, Cell.SIZE, RenderComponent.Realm.Game, DrawComponent.Layer.Eight);
+        selectRenderer = new DrawComponent(new Texture("cells/ground_selected.png"), Cell.SIZE, Cell.SIZE, RenderComponent.Realm.Game, DrawComponent.Layer.Eight);
     }
 
     private void generateGrid(int cellsX, int cellsY){

@@ -1,14 +1,18 @@
 package de.tahigames.demondefense.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.input.GestureDetector;
 
 import de.tahigames.demondefense.engine.Core;
 import de.tahigames.demondefense.engine.Game;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.engine.rendering.TextureAtlas;
+import de.tahigames.demondefense.game.input.GuiGestureListener;
+import de.tahigames.demondefense.game.input.MapGestureListener;
 import de.tahigames.demondefense.game.world.enemies.Enemy;
 import de.tahigames.demondefense.game.world.Map;
 
@@ -26,6 +30,10 @@ public class DemonDefenseGame extends Game {
         Enemy enemy = new Enemy(40, 40, 400, new DrawComponent(atlas, 0.25f, Animation.PlayMode.LOOP, RenderComponent.Realm.Game, DrawComponent.Layer.Five));
         map.addChild(enemy);
 
-        Gdx.input.setInputProcessor(new GameInputProcessor(map, core.getRenderingEngine().getGameCamera()));
+        GestureDetector mapDetector = new GestureDetector(new MapGestureListener(map, core.getRenderingEngine().getGameCamera()));
+        GestureDetector guiDetector = new GestureDetector(new GuiGestureListener(map, core.getRenderingEngine().getGameCamera()));
+
+        InputMultiplexer multiplexer = new InputMultiplexer(guiDetector, mapDetector);
+        Gdx.input.setInputProcessor(multiplexer);
     }
 }

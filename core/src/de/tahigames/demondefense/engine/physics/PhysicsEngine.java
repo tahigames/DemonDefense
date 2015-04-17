@@ -3,7 +3,6 @@ package de.tahigames.demondefense.engine.physics;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.tahigames.demondefense.engine.Component;
 import de.tahigames.demondefense.engine.Engine;
 
 /**
@@ -14,7 +13,7 @@ public class PhysicsEngine extends Engine<PhysicsComponent> {
     private ArrayList<CollisionManifest> manifests;
 
     private float simulationTime;
-    private float timeToSimulate;
+    private float passedTime;
 
     public PhysicsEngine(int simulationsPerSecond){
         simulationTime = 1f / simulationsPerSecond;
@@ -23,13 +22,13 @@ public class PhysicsEngine extends Engine<PhysicsComponent> {
     }
 
     public void simulate(float delta){
-        timeToSimulate += delta;
-        while(timeToSimulate > 0){
+        passedTime += delta;
+        while(passedTime > simulationTime){
             List<PhysicsComponent> components = getComponents();
 
             //place components a step ahead in time
             for (PhysicsComponent c : components){
-                c.integrate(delta);
+                c.integrate(simulationTime);
                 c.getCurrentCollisions().clear();
             }
 
@@ -57,7 +56,7 @@ public class PhysicsEngine extends Engine<PhysicsComponent> {
                 c.apply();
             }
 
-            timeToSimulate -= simulationTime;
+            passedTime -= simulationTime;
         }
     }
 

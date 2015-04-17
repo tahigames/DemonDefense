@@ -41,7 +41,6 @@ public class MapGestureListener implements GestureDetector.GestureListener {
 
     @Override
     public boolean fling(float velocityX, float velocityY, int button) {
-        map.placeTower();
         return false;
     }
 

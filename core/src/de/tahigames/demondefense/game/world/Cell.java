@@ -14,10 +14,12 @@ public class Cell extends Entity {
 
     public static final int SIZE = 16;
 
-    private Tower tower;
+    private MapObject mapObject;
+    private boolean blocked;
 
-    public Cell(float x, float y) {
+    public Cell(float x, float y, boolean blocked) {
         super(x, y);
+        this.blocked = blocked;
         addComponent(new DrawComponent(new Texture("cells/ground01.png"), SIZE, SIZE, RenderComponent.Realm.Game, DrawComponent.Layer.Nine));
     }
 
@@ -27,18 +29,17 @@ public class Cell extends Entity {
         this.tower = tower;
         this.tower.getPosition().set(getPosition());
         addChild(this.tower);
+        blocked = true;
     }
 
     public void removeTower(){
         removeChild(tower);
         tower = null;
+        blocked = false;
     }
 
     public boolean isBlocked(){
-        if (tower != null)
-            return true;
-
-        return false;
+        return blocked;
     }
 
 }

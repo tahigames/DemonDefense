@@ -26,7 +26,7 @@ public class Core {
         this.game = game;
         renderingEngine = new RenderingEngine();
         physicsEngine = new PhysicsEngine(30);
-        aiEngine = new AIEngine();
+        aiEngine = new AIEngine(30);
 
         root = new Entity(0,0);
         root.setCore(this);

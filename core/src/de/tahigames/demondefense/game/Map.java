@@ -49,15 +49,15 @@ public class Map extends Entity {
     }
 
     public void deselectCell(){
-        if(selectedCell != null)
-            selectedCell.removeComponent(selectRenderer);
+        selectedCell.removeComponent(selectRenderer);
         selectedCell = null;
     }
 
     public void placeTower(){
-        if(selectedCell != null)
+        if(selectedCell != null){
             selectedCell.placeTower(new BaseTower());
-        selectedCell = null;
+            deselectCell();
+        }
     }
 
 }

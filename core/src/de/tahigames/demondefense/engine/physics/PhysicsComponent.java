@@ -1,5 +1,7 @@
 package de.tahigames.demondefense.engine.physics;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
@@ -69,7 +71,7 @@ public abstract class PhysicsComponent extends Component {
 
     public void enableDebugging(){
         if(debugComponent == null){
-            debugComponent = new ShapeRenderComponent(RenderComponent.Realm.Game, RenderComponent.Layer.Zero, bounding);
+            debugComponent = new ShapeRenderComponent(RenderComponent.Realm.Game, RenderComponent.Layer.Zero, bounding, ShapeRenderer.ShapeType.Line, Color.WHITE);
             if(isConnectedToCore())
                 getParent().addComponent(debugComponent);
         }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
+import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.game.world.towers.Tower;
 
 /**
@@ -17,7 +18,7 @@ public class Cell extends Entity {
 
     public Cell(float x, float y) {
         super(x, y);
-        addComponent(new DrawComponent(new Texture("cells/ground01.png"), SIZE, SIZE, DrawComponent.Layer.Nine));
+        addComponent(new DrawComponent(new Texture("cells/ground01.png"), SIZE, SIZE, RenderComponent.Realm.Game, DrawComponent.Layer.Nine));
     }
 
     public void placeTower(Tower tower){

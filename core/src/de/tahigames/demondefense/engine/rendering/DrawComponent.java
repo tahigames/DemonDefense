@@ -18,16 +18,16 @@ public class DrawComponent extends RenderComponent {
     private Animation animation;
     private float stateTime;
 
-    public DrawComponent(Texture texture, float width, float height, Layer layer){
-        this(new TextureAtlas(texture, 1, 1), 0, Animation.PlayMode.NORMAL, width, height, layer);
+    public DrawComponent(Texture texture, float width, float height, Realm realm, Layer layer){
+        this(new TextureAtlas(texture, 1, 1), 0, Animation.PlayMode.NORMAL, width, height, realm, layer);
     }
 
-    public DrawComponent(TextureAtlas atlas, float frameTime, Animation.PlayMode playMode, Layer layer){
-        this(atlas, frameTime, playMode, atlas.getWidth(), atlas.getHeight(), layer);
+    public DrawComponent(TextureAtlas atlas, float frameTime, Animation.PlayMode playMode, Realm realm, Layer layer){
+        this(atlas, frameTime, playMode, atlas.getWidth(), atlas.getHeight(), realm, layer);
     }
 
-    public DrawComponent(TextureAtlas atlas, float frameTime, Animation.PlayMode playMode, float width, float height, Layer layer){
-        super(layer);
+    public DrawComponent(TextureAtlas atlas, float frameTime, Animation.PlayMode playMode, float width, float height, Realm realm, Layer layer){
+        super(realm, layer);
         initAnimation(atlas, frameTime, playMode);
 
         this.width = width;
@@ -50,7 +50,6 @@ public class DrawComponent extends RenderComponent {
         }
         animation = new Animation(frameTime, frames);
         animation.setPlayMode(playMode);
-
     }
 
     public void render(SpriteBatch batch, float delta){

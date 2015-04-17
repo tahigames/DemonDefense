@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
+import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.game.world.towers.BaseTower;
 
 /**
@@ -20,7 +21,7 @@ public class Map extends Entity {
         super(0, 0);
         validateCellCount(cellsX, cellsY);
         generateGrid(cellsX, cellsY);
-        selectRenderer = new DrawComponent(new Texture("cells/testbox16selected.png"), Cell.SIZE, Cell.SIZE, DrawComponent.Layer.Eight);
+        selectRenderer = new DrawComponent(new Texture("cells/testbox16selected.png"), Cell.SIZE, Cell.SIZE, RenderComponent.Realm.Game, DrawComponent.Layer.Eight);
     }
 
     private void generateGrid(int cellsX, int cellsY){

@@ -66,13 +66,13 @@ public class PhysicsEngine extends Engine<PhysicsComponent> {
     public void enableDebug(){
         this.debug = true;
         for(PhysicsComponent c : getComponents())
-            c.enableDebugging(RenderComponent.Layer.Three);
+            c.enableDebugging();
     }
 
     @Override
     public void addComponent(PhysicsComponent component) {
         super.addComponent(component);
         if(debug)
-            component.enableDebugging(RenderComponent.Layer.Three);
+            component.enableDebugging();
     }
 }

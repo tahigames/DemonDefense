@@ -10,13 +10,19 @@ import de.tahigames.demondefense.engine.Core;
  */
 public abstract class RenderComponent extends Component implements Comparable<RenderComponent> {
 
-    public static  enum Layer {
-        Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine;
+    public static enum Realm {
+        Game, Gui
     }
 
+    public static  enum Layer {
+        Nine, Eight, Seven, Six, Five, Four, Three, Two, One, Zero;
+    }
+
+    private Realm realm;
     private Layer layer;
 
-    public RenderComponent(Layer layer){
+    public RenderComponent(Realm realm, Layer layer){
+        this.realm = realm;
         this.layer = layer;
     }
 
@@ -36,7 +42,14 @@ public abstract class RenderComponent extends Component implements Comparable<Re
 
     @Override
     public int compareTo(RenderComponent o) {
-        return -layer.compareTo(o.layer);
+        int result = realm.compareTo(o.realm);
+        if(result != 0)
+            return result;
+        return layer.compareTo(o.layer);
+    }
+
+    public Realm getRealm() {
+        return realm;
     }
 
     public Layer getLayer() {

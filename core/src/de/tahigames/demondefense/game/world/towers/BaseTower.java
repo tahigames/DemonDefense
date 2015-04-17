@@ -3,6 +3,7 @@ package de.tahigames.demondefense.game.world.towers;
 import com.badlogic.gdx.graphics.Texture;
 
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
+import de.tahigames.demondefense.engine.rendering.RenderComponent;
 
 /**
  * Created by Marcel on 15.04.2015.
@@ -10,7 +11,7 @@ import de.tahigames.demondefense.engine.rendering.DrawComponent;
 public class BaseTower extends  Tower{
 
     public BaseTower() {
-        super("Basis Turm", new DrawComponent(new Texture("towers/tower01.png"), SIZE, SIZE, DrawComponent.Layer.Five));
+        super("Basis Turm", new DrawComponent(new Texture("towers/tower01.png"), SIZE, SIZE, RenderComponent.Realm.Game, DrawComponent.Layer.Five));
     }
 
     @Override

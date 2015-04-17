@@ -26,7 +26,6 @@ public class Enemy extends Entity {
                 return false;
             }
         };
-        physicsComponent.enableDebugging(renderComponent.getLayer());
         addComponent(physicsComponent);
         addComponent(new EnemyAI(this, physicsComponent));
     }

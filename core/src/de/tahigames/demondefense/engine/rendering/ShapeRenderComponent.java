@@ -14,8 +14,8 @@ public class ShapeRenderComponent extends RenderComponent {
 
     private Bounding bounding;
 
-    public ShapeRenderComponent(Layer layer, Bounding bounding) {
-        super(layer);
+    public ShapeRenderComponent(Realm realm, Layer layer, Bounding bounding) {
+        super(realm, layer);
         this.bounding = bounding;
     }
 

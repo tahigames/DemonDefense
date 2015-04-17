@@ -1,14 +1,15 @@
 package de.tahigames.demondefense.engine.rendering;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.Collections;
+import java.util.List;
 
 import de.tahigames.demondefense.engine.Engine;
 
@@ -18,15 +19,17 @@ import de.tahigames.demondefense.engine.Engine;
 public class RenderingEngine extends Engine<RenderComponent> {
 
     private Viewport viewPort;
-    private OrthographicCamera camera;
+    private OrthographicCamera gameCamera;
+    private OrthographicCamera guiCamera;
 
     private SpriteBatch batch;
 
     public RenderingEngine(){
-        camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.zoom = 0.25f;
-        viewPort = new FitViewport(640, 480, camera);
+        gameCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        gameCamera.zoom = 0.25f;
+        viewPort = new FitViewport(640, 480, gameCamera);
         viewPort.apply();
+        guiCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch = new SpriteBatch();
     }
 
@@ -34,47 +37,36 @@ public class RenderingEngine extends Engine<RenderComponent> {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        handleInput();
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
+        gameCamera.update();
 
-        Collections.sort(getComponents());
+        List<RenderComponent> components = getComponents();
+
+        Collections.sort(components);
 
         batch.begin();
-        for (RenderComponent c : getComponents()){
+        batch.setProjectionMatrix(gameCamera.combined);
+
+        int i = 0;
+        RenderComponent c;
+        while(i < components.size() && (c = components.get(i)).getRealm() == RenderComponent.Realm.Game){
             c.render(batch, delta);
+            i++;
+        }
+
+        batch.setProjectionMatrix(guiCamera.combined);
+        while(i < components.size() && (c = components.get(i)).getRealm() == RenderComponent.Realm.Gui){
+            c.render(batch, delta);
+            i++;
         }
         batch.end();
 
     }
 
-    //Temporary
-    private void handleInput(){
-        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            camera.zoom += 0.02;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
-            camera.zoom -= 0.02;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            camera.translate(-3, 0, 0);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            camera.translate(3, 0, 0);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            camera.translate(0, -3, 0);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            camera.translate(0, 3, 0);
-        }
-
-//        camera.zoom = MathUtils.clamp(camera.zoom, 0.1f, 100 / camera.viewportWidth);
-
-
+    public OrthographicCamera getGameCamera() {
+        return gameCamera;
     }
 
-    public OrthographicCamera getCamera() {
-        return camera;
+    public OrthographicCamera getGuiCamera() {
+        return guiCamera;
     }
 }

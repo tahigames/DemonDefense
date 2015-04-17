@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import de.tahigames.demondefense.engine.Core;
 import de.tahigames.demondefense.engine.Component;
 import de.tahigames.demondefense.engine.Entity;
+import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.engine.rendering.ShapeRenderComponent;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
 
@@ -66,9 +67,9 @@ public abstract class PhysicsComponent extends Component {
         return velocity;
     }
 
-    public void enableDebugging(DrawComponent.Layer layer){
+    public void enableDebugging(){
         if(debugComponent == null){
-            debugComponent = new ShapeRenderComponent(layer, bounding);
+            debugComponent = new ShapeRenderComponent(RenderComponent.Realm.Game, RenderComponent.Layer.Zero, bounding);
             if(isConnectedToCore())
                 getParent().addComponent(debugComponent);
         }

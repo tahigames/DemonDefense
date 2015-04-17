@@ -36,7 +36,6 @@ public abstract class Tower extends Entity{
             public void onCollisionWith(Entity e) {
             }
         };
-        physicsComponent.enableDebugging(RenderComponent.Layer.Eight);
         addComponent(physicsComponent);
         addComponent(new TowerAI(physicsComponent, this));
     }

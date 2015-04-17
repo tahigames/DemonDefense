@@ -59,5 +59,4 @@ public class Map extends Entity {
             deselectCell();
         }
     }
-
 }

@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.tahigames.demondefense.engine.Engine;
+import de.tahigames.demondefense.engine.rendering.RenderComponent;
 
 /**
  * Created by Mirco on 14.04.2015.
  */
 public class PhysicsEngine extends Engine<PhysicsComponent> {
+
+    private boolean debug;
 
     private ArrayList<CollisionManifest> manifests;
 
@@ -60,4 +63,16 @@ public class PhysicsEngine extends Engine<PhysicsComponent> {
         }
     }
 
+    public void enableDebug(){
+        this.debug = true;
+        for(PhysicsComponent c : getComponents())
+            c.enableDebugging(RenderComponent.Layer.Three);
+    }
+
+    @Override
+    public void addComponent(PhysicsComponent component) {
+        super.addComponent(component);
+        if(debug)
+            component.enableDebugging(RenderComponent.Layer.Three);
+    }
 }

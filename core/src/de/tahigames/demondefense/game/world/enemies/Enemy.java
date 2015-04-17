@@ -1,4 +1,4 @@
-package de.tahigames.demondefense.game.enemies;
+package de.tahigames.demondefense.game.world.enemies;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.physics.AaBb;

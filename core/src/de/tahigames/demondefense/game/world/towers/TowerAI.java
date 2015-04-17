@@ -1,10 +1,10 @@
-package de.tahigames.demondefense.game.towers;
+package de.tahigames.demondefense.game.world.towers;
 
 import java.util.List;
 
 import de.tahigames.demondefense.engine.ai.AIComponent;
 import de.tahigames.demondefense.engine.physics.PhysicsComponent;
-import de.tahigames.demondefense.game.enemies.Enemy;
+import de.tahigames.demondefense.game.world.enemies.Enemy;
 
 /**
  * Created by Marcel on 15.04.2015.

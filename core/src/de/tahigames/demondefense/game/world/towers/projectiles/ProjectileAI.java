@@ -1,4 +1,4 @@
-package de.tahigames.demondefense.game.towers;
+package de.tahigames.demondefense.game.world.towers.projectiles;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.ai.AIComponent;

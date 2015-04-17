@@ -1,10 +1,10 @@
-package de.tahigames.demondefense.game;
+package de.tahigames.demondefense.game.world;
 
 import com.badlogic.gdx.graphics.Texture;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
-import de.tahigames.demondefense.game.towers.Tower;
+import de.tahigames.demondefense.game.world.towers.Tower;
 
 /**
  * Created by Marcel on 14.04.2015.

@@ -1,8 +1,7 @@
-package de.tahigames.demondefense.game.enemies;
+package de.tahigames.demondefense.game.world.enemies;
 
 import de.tahigames.demondefense.engine.ai.AIComponent;
 import de.tahigames.demondefense.engine.physics.PhysicsComponent;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
 
 /**
  * Created by Mirco on 16.04.2015.

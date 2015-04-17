@@ -1,15 +1,14 @@
-package de.tahigames.demondefense.game.towers;
+package de.tahigames.demondefense.game.world.towers.projectiles;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 
-import de.tahigames.demondefense.engine.Core;
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.physics.AaBb;
 import de.tahigames.demondefense.engine.physics.PhysicsComponent;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
 import de.tahigames.demondefense.engine.rendering.TextureAtlas;
-import de.tahigames.demondefense.game.enemies.Enemy;
+import de.tahigames.demondefense.game.world.enemies.Enemy;
 
 /**
  * Created by Marcel on 15.04.2015.

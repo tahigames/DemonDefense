@@ -11,7 +11,8 @@ import de.tahigames.demondefense.engine.Core;
 import de.tahigames.demondefense.engine.Game;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
 import de.tahigames.demondefense.engine.rendering.TextureAtlas;
-import de.tahigames.demondefense.game.enemies.Enemy;
+import de.tahigames.demondefense.game.world.enemies.Enemy;
+import de.tahigames.demondefense.game.world.Map;
 
 /**
  * Created by Mirco on 14.04.2015.

@@ -9,6 +9,4 @@ import com.badlogic.gdx.graphics.Camera;
 public abstract class Game {
 
     public abstract void init(Core core);
-    public abstract void handleInput(Input input, Camera cam);
-
 }

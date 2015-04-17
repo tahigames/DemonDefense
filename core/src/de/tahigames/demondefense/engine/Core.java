@@ -39,7 +39,6 @@ public class Core {
     public void run(){
         float delta = Gdx.graphics.getDeltaTime();
 
-        game.handleInput(Gdx.input, renderingEngine.getCamera());
         aiEngine.think(delta);
         physicsEngine.simulate(delta);
         renderingEngine.render(delta);

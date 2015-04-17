@@ -24,9 +24,8 @@ public class RenderingEngine extends Engine<RenderComponent> {
 
     public RenderingEngine(){
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        //camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        //camera.update();
-        viewPort = new FitViewport(800, 600, camera);
+        camera.zoom = 0.25f;
+        viewPort = new FitViewport(640, 480, camera);
         viewPort.apply();
         batch = new SpriteBatch();
     }

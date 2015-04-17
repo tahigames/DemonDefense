@@ -4,8 +4,6 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
 
-import de.tahigames.demondefense.game.towers.Projectile;
-
 /**
  * Created by Mirco on 14.04.2015.
  */

@@ -27,16 +27,7 @@ public class DemonDefenseGame extends Game {
         TextureAtlas atlas = new TextureAtlas(new Texture("enemies/enemy02.png"), 2, 2);
         Enemy enemy = new Enemy(40, 40, 400, new DrawComponent(atlas, 0.25f, Animation.PlayMode.LOOP, DrawComponent.Layer.Five));
         map.addChild(enemy);
-    }
 
-    @Override
-    public void handleInput(Input input, Camera cam){
-        if(Gdx.input.justTouched()){
-            Vector3 screenCoord = new Vector3(input.getX(), input.getY(), 0);
-            Vector3 worldCoord = cam.unproject(screenCoord);
-            map.selectCellAt(worldCoord.x, worldCoord.y);
-            map.placeTower();
-            Gdx.app.log("Input", "X: " + input.getX() + " Y: " + input.getY());
-        }
+        Gdx.input.setInputProcessor(new GameInputProcessor(map, core.getRenderingEngine().getCamera()));
     }
 }

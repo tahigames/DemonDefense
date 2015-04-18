@@ -16,6 +16,7 @@ public class Cell extends Entity {
 
     private MapObject mapObject;
     private boolean blocked;
+    private Tower tower;
 
     public Cell(float x, float y, boolean blocked) {
         super(x, y);

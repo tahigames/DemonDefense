@@ -28,7 +28,7 @@ public class Map extends Entity {
         grid = new Cell[cellsX][cellsY];
         for (int x = 0; x < cellsX; x++) {
             for (int y = 0; y < cellsY; y++) {
-                Cell cell = new Cell((x - cellsX / 2) * cellSize + cellSize / 2f, (y - cellsY / 2) * cellSize + cellSize / 2f);
+                Cell cell = new Cell((x - cellsX / 2) * cellSize + cellSize / 2f, (y - cellsY / 2) * cellSize + cellSize / 2f, false);
                 grid[x][y] = cell;
                 addChild(cell);
             }

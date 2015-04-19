@@ -27,27 +27,20 @@ public class DemonDefenseGame extends Game {
 
     @Override
     public void init(Core core) {
-//        Map map = new Map(20, 20);
-//        Gui gui = new Gui(map);
-//
-//        core.getRoot().addChild(gui);
-//        core.getRoot().addChild(map);
-//
+        Map map = new Map("wasteland.tmx");
+        Gui gui = new Gui(map);
+
+        core.getRoot().addChild(gui);
+        core.getRoot().addChild(map);
+
 //        TextureAtlas atlas = new TextureAtlas(new Texture("enemies/enemy02.png"), 2, 2);
 //        Enemy enemy = new Enemy(40, 40, 400, new DrawComponent(atlas, 0.25f, Animation.PlayMode.LOOP, RenderComponent.Realm.Game, DrawComponent.Layer.Five));
 //        map.addChild(enemy);
-//
-//        GestureDetector mapDetector = new GestureDetector(new MapGestureListener(map, core.getRenderingEngine().getGameCamera()));
-//        GestureDetector guiDetector = new GestureDetector(new GuiGestureListener(gui, core.getRenderingEngine().getGuiCamera()));
-//
-//        InputMultiplexer multiplexer = new InputMultiplexer(guiDetector, mapDetector);
-//        Gdx.input.setInputProcessor(multiplexer);
 
-        TiledMap tmap = new TmxMapLoader().load("levels/wasteland.tmx");
-        float unitScale = 1 / 16f;
-        OrthogonalTiledMapRenderer renderer = new OrthogonalTiledMapRenderer(tmap, unitScale);
+        GestureDetector mapDetector = new GestureDetector(new MapGestureListener(map, core.getRenderingEngine().getGameCamera()));
+        GestureDetector guiDetector = new GestureDetector(new GuiGestureListener(gui, core.getRenderingEngine().getGuiCamera()));
 
-
-
+        InputMultiplexer multiplexer = new InputMultiplexer(guiDetector, mapDetector);
+        Gdx.input.setInputProcessor(multiplexer);
     }
 }

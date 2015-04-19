@@ -30,7 +30,7 @@ public class MapGestureListener implements GestureDetector.GestureListener {
     @Override
     public boolean tap(float x, float y, int count, int button) {
         Vector3 worldCoord = cam.unproject(new Vector3(x, y, 0));
-        map.selectCellAt(worldCoord.x, worldCoord.y);
+        map.select(worldCoord.x, worldCoord.y);
         return true;
     }
 

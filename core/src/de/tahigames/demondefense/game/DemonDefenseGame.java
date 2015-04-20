@@ -14,6 +14,7 @@ import de.tahigames.demondefense.game.input.GuiGestureListener;
 import de.tahigames.demondefense.game.input.MapGestureListener;
 import de.tahigames.demondefense.game.world.Map;
 import de.tahigames.demondefense.game.world.enemies.Enemy;
+import de.tahigames.demondefense.game.world.enemies.HellSlime;
 
 /**
  * Created by Mirco on 14.04.2015.
@@ -28,8 +29,8 @@ public class DemonDefenseGame extends Game {
         core.getRoot().addChild(gui);
         core.getRoot().addChild(map);
 
-        Enemy e = new Enemy(0, 0, 100, new DrawComponent(new Texture("enemies/enemy01.png"), 16, 16, RenderComponent.Realm.Game, RenderComponent.Layer.One));
-        core.getRoot().addChild(e);
+        HellSlime slime = new HellSlime(0, 0);
+        map.addChild(slime);
 
         GestureDetector mapDetector = new GestureDetector(new MapGestureListener(map, gui, core.getRenderingEngine().getGameCamera()));
         GestureDetector guiDetector = new GestureDetector(new GuiGestureListener(gui, core.getRenderingEngine().getGuiCamera()));

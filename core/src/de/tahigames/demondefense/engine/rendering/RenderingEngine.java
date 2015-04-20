@@ -30,6 +30,8 @@ public class RenderingEngine extends Engine<RenderComponent> {
         viewPort = new FitViewport(640, 480, gameCamera);
         viewPort.apply();
         guiCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        viewPort = new FitViewport(640, 480, guiCamera);
+        viewPort.apply();
         batch = new SpriteBatch();
     }
 

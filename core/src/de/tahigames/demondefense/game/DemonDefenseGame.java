@@ -33,11 +33,7 @@ public class DemonDefenseGame extends Game {
         core.getRoot().addChild(gui);
         core.getRoot().addChild(map);
 
-//        TextureAtlas atlas = new TextureAtlas(new Texture("enemies/enemy02.png"), 2, 2);
-//        Enemy enemy = new Enemy(40, 40, 400, new DrawComponent(atlas, 0.25f, Animation.PlayMode.LOOP, RenderComponent.Realm.Game, DrawComponent.Layer.Five));
-//        map.addChild(enemy);
-
-        GestureDetector mapDetector = new GestureDetector(new MapGestureListener(map, core.getRenderingEngine().getGameCamera()));
+        GestureDetector mapDetector = new GestureDetector(new MapGestureListener(map, gui, core.getRenderingEngine().getGameCamera()));
         GestureDetector guiDetector = new GestureDetector(new GuiGestureListener(gui, core.getRenderingEngine().getGuiCamera()));
 
         InputMultiplexer multiplexer = new InputMultiplexer(guiDetector, mapDetector);

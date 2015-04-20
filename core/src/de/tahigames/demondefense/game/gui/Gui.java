@@ -31,4 +31,12 @@ public class Gui extends Entity {
         }
         return false;
     }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
 }

@@ -43,7 +43,7 @@ public class Core {
         physicsEngine.simulate(delta);
         renderingEngine.render(delta);
 
-        fpsLogger.log();
+//        fpsLogger.log();
     }
 
     public Entity getRoot() {

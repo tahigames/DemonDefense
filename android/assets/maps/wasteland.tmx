@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="wasteland" tilewidth="16" tileheight="16">
-  <image source="wasteland.png" width="64" height="32"/>
- </tileset>
- <tileset firstgid="9" name="meta" tilewidth="16" tileheight="16">
-  <image source="meta.png" width="32" height="32"/>
+  <image source="wasteland.png" width="80" height="32"/>
   <tile id="0">
    <properties>
-    <property name="portal" value="start"/>
+    <property name="forConstruction" value="true"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="forConstruction" value="true"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="portal" value="end"/>
+    <property name="forConstruction" value="true"/>
    </properties>
   </tile>
   <tile id="3">
@@ -20,15 +22,58 @@
     <property name="blocked" value="true"/>
    </properties>
   </tile>
+  <tile id="4">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="forConstruction" value="true"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="forConstruction" value="true"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="forConstruction" value="true"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="bg" width="20" height="20">
+ <tileset firstgid="11" name="portals" tilewidth="16" tileheight="16">
+  <image source="portals.png" width="32" height="16"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="ground" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJytVEEOgCAMm4Ci8ZM8zaf4NOeBZGlGncZDM0Tsuq1YRGT9gM3ZKyKHxjbpGpHgOTtnbixmvRI+i+rsefydbyFcqJPlRH0zOZ+F68V6K3yTSM9s3+qAD2seaWDvLd+Tlp4vk7NRPm9G3gyjfokC+dAbzCvohUz0jXieevJnvehnzM3uzEhrRF+CGKkXc1Wn31/m+8aDmJ/p+8t/bB5e/V1HMnz6j24az47drN9Cuc4L6rIlfg==
+   eJxjZGBgYBwCmA2LGBMNzQZhDixsbHYy09Df7CSoJTc8cPmfGvZicz8u+yh1BzGYgw52kJom8IUfKe6lR/jR0x5axC0+NfjyGrXKmuGGAVhyAfo=
   </data>
  </layer>
- <layer name="meta" width="20" height="20" opacity="0.4">
+ <layer name="objects" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJzjYWBg4KEyphYYNW/UvFHzRs0bNY+65lETAwAwBQOR
+   eJy1k9ENgCAMRPtRPkCHZDRHcTRBJKlNkVqgycWE5F7KcSIAeIM24QwBjvSNMGn8Yp6bzNNMADj9o8C8Wh7dO3tS7mL2lv2qR/JaeWm3iOXOw7xQPHffQmN37rG+8+r+5aF94OL90PBqH3r/ppTJnzfXZNPj1R3cIA9LX1/ZSX3T8Gi/uHjf6B1avJFZweNZ7R/96ylnfAFpyD/9
   </data>
  </layer>
 </map>

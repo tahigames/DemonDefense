@@ -34,8 +34,6 @@ public class MapGestureListener implements GestureDetector.GestureListener {
 
     @Override
     public boolean tap(float x, float y, int count, int button) {
-        correctOverlap();
-
         Vector3 worldCoord = cam.unproject(new Vector3(x, y, 0));
         map.select(worldCoord.x, worldCoord.y);
         return true;

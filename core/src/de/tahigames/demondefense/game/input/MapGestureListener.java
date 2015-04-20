@@ -88,11 +88,11 @@ public class MapGestureListener implements GestureDetector.GestureListener {
     }
 
     private void correctOverlap(){
-        final float viewWidth = cam.viewportWidth - gui.getWidth();
+        final float viewWidth = cam.viewportWidth;
         final float viewHeight = cam.viewportHeight;
 
-        Vector3 camMinExtent = new Vector3(cam.position.x - (cam.viewportWidth / 2f) * cam.zoom, cam.position.y - (viewHeight / 2f) * cam.zoom, 0);
-        Vector3 camMaxExtent = new Vector3(cam.position.x + (viewWidth / 2f) * cam.zoom, cam.position.y + (viewHeight / 2f) * cam.zoom, 0);
+        Vector3 camMinExtent = new Vector3(cam.position.x - (viewWidth / 2f) * cam.zoom, cam.position.y - (viewHeight / 2f) * cam.zoom, 0);
+        Vector3 camMaxExtent = new Vector3(cam.position.x + ((viewWidth / 2f - gui.getWidth()) * cam.zoom), cam.position.y + (viewHeight / 2f) * cam.zoom, 0);
 
         Vector3 minDist = new Vector3();
         minDist.set(map.getPosition(), 0);

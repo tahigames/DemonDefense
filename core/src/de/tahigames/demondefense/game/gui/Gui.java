@@ -1,6 +1,7 @@
 package de.tahigames.demondefense.game.gui;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 
 import de.tahigames.demondefense.engine.Entity;
@@ -16,11 +17,11 @@ public class Gui extends Entity {
     private float height;
     private Map map;
 
-    public Gui(Map map) {
-        super((Gdx.graphics.getWidth() * (3f / 4f) / 2), 0);
+    public Gui(Map map, OrthographicCamera cam) {
+        super((cam.viewportWidth * (3f/4f)) / 2f, 0);
         this.map = map;
-        width = Gdx.graphics.getWidth() / 4;
-        height = Gdx.graphics.getHeight();
+        this.width = cam.viewportWidth / 4f;
+        this.height = cam.viewportHeight;
         addComponent(new DrawComponent(new Texture("gui/gui01.png"), width , height, RenderComponent.Realm.Gui, RenderComponent.Layer.Nine));
     }
 

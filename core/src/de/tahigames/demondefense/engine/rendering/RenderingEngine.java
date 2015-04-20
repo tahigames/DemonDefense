@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -27,10 +28,10 @@ public class RenderingEngine extends Engine<RenderComponent> {
     public RenderingEngine(){
         gameCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         gameCamera.zoom = 0.25f;
-        viewPort = new FitViewport(640, 480, gameCamera);
+        viewPort = new FitViewport(640, 360, gameCamera);
         viewPort.apply();
         guiCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        viewPort = new FitViewport(640, 480, guiCamera);
+        viewPort = new FitViewport(640, 360, guiCamera);
         viewPort.apply();
         batch = new SpriteBatch();
     }
@@ -42,27 +43,38 @@ public class RenderingEngine extends Engine<RenderComponent> {
         gameCamera.update();
 
         List<RenderComponent> components = getComponents();
-
-        //TODO don't sort everytime when rendering... put every new component into the right position when it is being added.
-        Collections.sort(components);
+        int j = 0;
+        RenderComponent c;
 
         batch.begin();
-        batch.setProjectionMatrix(gameCamera.combined);
+        {
 
-        int i = 0;
-        RenderComponent c;
-        while(i < components.size() && (c = components.get(i)).getRealm() == RenderComponent.Realm.Game){
-            c.render(batch, delta);
-            i++;
+            batch.setProjectionMatrix(gameCamera.combined);
+            while (j < components.size() && (c = components.get(j)).getRealm() == RenderComponent.Realm.Game) {
+                c.render(batch, delta);
+                j++;
+            }
         }
-
-        batch.setProjectionMatrix(guiCamera.combined);
-        while(i < components.size() && (c = components.get(i)).getRealm() == RenderComponent.Realm.Gui){
-            c.render(batch, delta);
-            i++;
+        batch.end();
+        batch.begin();
+        {
+            batch.setProjectionMatrix(guiCamera.combined);
+            while(j < components.size() && (c = components.get(j)).getRealm() == RenderComponent.Realm.Gui){
+                c.render(batch, delta);
+                j++;
+            }
         }
         batch.end();
 
+    }
+
+    @Override
+    public void addComponent(RenderComponent component) {
+        int i = 0;
+        while(getComponents().size() > i && getComponents().get(i).compareTo(component) < 0) {
+            i++;
+        }
+        getComponents().add(i, component);
     }
 
     public OrthographicCamera getGameCamera() {

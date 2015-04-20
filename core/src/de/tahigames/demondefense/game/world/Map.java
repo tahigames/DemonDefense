@@ -37,7 +37,6 @@ public class Map extends Entity {
         towers = new Tower[props.get("width", Integer.class)][props.get("height", Integer.class)];
         TiledMapTileLayer groundLayer = (TiledMapTileLayer) tiledMap.getLayers().get(0);
         TiledMapTileLayer objectLayer = (TiledMapTileLayer) tiledMap.getLayers().get(1);
-        System.out.println(objectLayer.getCell(1,17).getTile().getProperties().get("blocked"));
         for (int x = 0; x < grid.length; x++) {
             for (int y = 0; y < grid[0].length; y++) {
                 int actualY = grid[0].length - 1 - y;

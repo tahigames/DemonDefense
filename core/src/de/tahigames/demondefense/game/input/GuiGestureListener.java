@@ -3,7 +3,9 @@ package de.tahigames.demondefense.game.input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
+import de.tahigames.demondefense.game.gui.Gui;
 import de.tahigames.demondefense.game.world.Map;
 
 /**
@@ -11,11 +13,11 @@ import de.tahigames.demondefense.game.world.Map;
  */
 public class GuiGestureListener implements GestureDetector.GestureListener {
 
-    private Map map;
+    private Gui gui;
     private OrthographicCamera cam;
 
-    public GuiGestureListener(Map map, OrthographicCamera cam){
-        this.map = map;
+    public GuiGestureListener(Gui gui, OrthographicCamera cam){
+        this.gui = gui;
         this.cam = cam;
     }
 
@@ -26,8 +28,8 @@ public class GuiGestureListener implements GestureDetector.GestureListener {
 
     @Override
     public boolean tap(float x, float y, int count, int button) {
-        map.placeTower();
-        return true;
+        Vector3 worldCoord = cam.unproject(new Vector3(x, y, 0));
+        return gui.tap(worldCoord.x, worldCoord.y);
     }
 
     @Override

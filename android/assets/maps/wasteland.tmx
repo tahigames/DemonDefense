@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="wasteland" tilewidth="16" tileheight="16">
+  <image source="wasteland.png" width="64" height="32"/>
+ </tileset>
+ <tileset firstgid="9" name="meta" tilewidth="16" tileheight="16">
+  <image source="meta.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="portal" value="start"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="portal" value="end"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="bg" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJytVEEOgCAMm4Ci8ZM8zaf4NOeBZGlGncZDM0Tsuq1YRGT9gM3ZKyKHxjbpGpHgOTtnbixmvRI+i+rsefydbyFcqJPlRH0zOZ+F68V6K3yTSM9s3+qAD2seaWDvLd+Tlp4vk7NRPm9G3gyjfokC+dAbzCvohUz0jXieevJnvehnzM3uzEhrRF+CGKkXc1Wn31/m+8aDmJ/p+8t/bB5e/V1HMnz6j24az47drN9Cuc4L6rIlfg==
+  </data>
+ </layer>
+ <layer name="meta" width="20" height="20" opacity="0.4">
+  <data encoding="base64" compression="zlib">
+   eJzjYWBg4KEyphYYNW/UvFHzRs0bNY+65lETAwAwBQOR
+  </data>
+ </layer>
+</map>

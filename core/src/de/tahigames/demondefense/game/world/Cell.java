@@ -10,35 +10,24 @@ import de.tahigames.demondefense.game.world.towers.Tower;
 /**
  * Created by Marcel on 14.04.2015.
  */
-public class Cell extends Entity {
+public class Cell {
 
     public static final int SIZE = 16;
 
-    private Tower tower;
+    private boolean blocked;
+    private boolean forConstruction;
 
-    public Cell(float x, float y) {
-        super(x, y);
-        addComponent(new DrawComponent(new Texture("cells/ground01.png"), SIZE, SIZE, RenderComponent.Realm.Game, DrawComponent.Layer.Nine));
-    }
-
-    public void placeTower(Tower tower){
-        if(this.tower != null)
-            throw new IllegalStateException("Tower already exists");
-        this.tower = tower;
-        this.tower.getPosition().set(getPosition());
-        addChild(this.tower);
-    }
-
-    public void removeTower(){
-        removeChild(tower);
-        tower = null;
+    public Cell(boolean blocked, boolean forConstruction) {
+        this.blocked = blocked;
+        this.forConstruction = forConstruction;
     }
 
     public boolean isBlocked(){
-        if (tower != null)
-            return true;
+        return blocked;
+    }
 
-        return false;
+    public boolean isForConstruction(){
+        return !blocked && forConstruction;
     }
 
 }

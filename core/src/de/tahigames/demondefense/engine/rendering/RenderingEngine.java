@@ -41,6 +41,7 @@ public class RenderingEngine extends Engine<RenderComponent> {
 
         List<RenderComponent> components = getComponents();
 
+        //TODO don't sort everytime when rendering... put every new component into the right position when it is being added.
         Collections.sort(components);
 
         batch.begin();

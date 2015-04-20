@@ -4,7 +4,6 @@ import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.physics.Circle;
 import de.tahigames.demondefense.engine.physics.PhysicsComponent;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.game.world.enemies.Enemy;
 import de.tahigames.demondefense.game.world.towers.projectiles.Projectile;
 

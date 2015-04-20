@@ -17,12 +17,13 @@ public class TiledMapRenderComponent extends RenderComponent {
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera camera;
 
+    private final TiledMap map;
     private final int mapWidth;
     private final int mapHeight;
 
     public TiledMapRenderComponent(TiledMap map, Realm realm, Layer layer) {
         super(realm, layer);
-        mapRenderer = new OrthogonalTiledMapRenderer(map, 1f);
+        this.map = map;
 
         MapProperties props = map.getProperties();
         mapWidth = props.get("width", Integer.class) * props.get("tilewidth", Integer.class);
@@ -33,14 +34,19 @@ public class TiledMapRenderComponent extends RenderComponent {
     public void render(SpriteBatch batch, float delta) {
         camera.translate(mapWidth / 2, mapHeight / 2);
         camera.update();
+        batch.end();
         mapRenderer.setView(camera);
         mapRenderer.render();
+        batch.begin();
         camera.translate(-mapWidth / 2, -mapHeight / 2);
+        camera.update();
+        mapRenderer.setView(camera);
     }
 
     @Override
     public void onAddToCore(Core core) {
         super.onAddToCore(core);
         this.camera = core.getRenderingEngine().getGameCamera();
+        mapRenderer = new OrthogonalTiledMapRenderer(map, core.getRenderingEngine().getSpriteBatch());
     }
 }

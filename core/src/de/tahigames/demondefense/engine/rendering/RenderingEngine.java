@@ -70,11 +70,12 @@ public class RenderingEngine extends Engine<RenderComponent> {
 
     @Override
     public void addComponent(RenderComponent component) {
-        int i = 0;
-        while(getComponents().size() > i && getComponents().get(i).compareTo(component) < 0) {
-            i++;
-        }
-        getComponents().add(i, component);
+        getComponents().add(component);
+        Collections.sort(getComponents());
+    }
+
+    public SpriteBatch getSpriteBatch() {
+        return batch;
     }
 
     public OrthographicCamera getGameCamera() {

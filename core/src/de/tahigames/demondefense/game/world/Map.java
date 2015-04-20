@@ -1,6 +1,7 @@
 package de.tahigames.demondefense.game.world;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -29,6 +30,7 @@ public class Map extends Entity {
         generateGrid(tiledMap);
         addComponent(new TiledMapRenderComponent(tiledMap, RenderComponent.Realm.Game, RenderComponent.Layer.Nine));
         selector = new CellSelector();
+        addChild(selector);
     }
 
     private void generateGrid(TiledMap tiledMap){
@@ -70,7 +72,9 @@ public class Map extends Entity {
                 ;
             else{
                 Cell cell = getCellAt(x, y);
-
+                selector.getPosition().set((x / Cell.SIZE) * Cell.SIZE , (y / Cell.SIZE) * Cell.SIZE);
+                selector.enable();
+                System.out.println("select cell " + (x / Cell.SIZE) * Cell.SIZE + " " + (y / Cell.SIZE) * Cell.SIZE);
             }
         }
     }
@@ -106,7 +110,7 @@ public class Map extends Entity {
 
         public CellSelector() {
             super(0, 0);
-            renderComponent = new DrawComponent(new Texture("cells/selector.png"), Cell.SIZE, Cell.SIZE, RenderComponent.Realm.Game, RenderComponent.Layer.Eight);
+            renderComponent = new DrawComponent(new Texture("cells/selector.png"), Cell.SIZE, Cell.SIZE, RenderComponent.Realm.Game, RenderComponent.Layer.Zero);
         }
 
         public void enable() {

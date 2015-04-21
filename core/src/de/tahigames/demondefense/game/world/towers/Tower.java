@@ -4,6 +4,7 @@ import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.physics.Circle;
 import de.tahigames.demondefense.engine.physics.PhysicsComponent;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
+import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.game.world.enemies.Enemy;
 import de.tahigames.demondefense.game.world.towers.projectiles.Projectile;
 
@@ -17,6 +18,7 @@ public abstract class Tower extends Entity{
     private String name;
     private int level;
     private TowerAttributes[] levels;
+    private PhysicsComponent physicsComponent;
 
     public Tower(String name, DrawComponent renderComponent) {
         super(0, 0);
@@ -25,7 +27,7 @@ public abstract class Tower extends Entity{
         levels = new TowerAttributes[3];
         generateLevels(levels);
         addComponent(renderComponent);
-        PhysicsComponent physicsComponent = new PhysicsComponent(new Circle(getX(), getY(), levels[level].getRange())) {
+        physicsComponent = new PhysicsComponent(new Circle(getX(), getY(), levels[level].getRange())) {
             @Override
             public boolean canCollideWith(Entity e) {
                 return e instanceof Enemy;
@@ -37,6 +39,14 @@ public abstract class Tower extends Entity{
         };
         addComponent(physicsComponent);
         addComponent(new TowerAI(physicsComponent, this));
+    }
+
+    public void select(){
+        physicsComponent.enableDebugging();
+    }
+
+    public void deselect(){
+        physicsComponent.disableDebugging();
     }
 
     protected abstract void generateLevels(TowerAttributes[] levels);

@@ -20,22 +20,19 @@ public class Map extends Entity {
     public static final int CELL_SIZE = 16;
 
     private Cell[][] grid;
-    private CellSelector selector;
-    private Tower[][] towers;
+    private Cell selectedCell;
 
     public Map(String mapName) {
         super(0, 0);
         TiledMap tiledMap = new TmxMapLoader().load("maps/" + mapName);
         generateGrid(tiledMap);
         addComponent(new TiledMapRenderComponent(tiledMap, RenderComponent.Realm.Game, RenderComponent.Layer.Nine));
-        selector = new CellSelector();
-        addChild(selector);
     }
 
     private void generateGrid(TiledMap tiledMap){
         MapProperties props = tiledMap.getProperties();
         grid = new Cell[props.get("width", Integer.class)][props.get("height", Integer.class)];
-        towers = new Tower[props.get("width", Integer.class)][props.get("height", Integer.class)];
+
         TiledMapTileLayer groundLayer = (TiledMapTileLayer) tiledMap.getLayers().get(0);
         TiledMapTileLayer objectLayer = (TiledMapTileLayer) tiledMap.getLayers().get(1);
         for (int x = 0; x < grid.length; x++) {
@@ -43,7 +40,9 @@ public class Map extends Entity {
                 int actualY = grid[0].length - 1 - y;
                 boolean forConstruction = fetchProperty(groundLayer.getCell(x, actualY), "forConstruction", true);
                 boolean blocked = fetchProperty(objectLayer.getCell(x, actualY), "blocked", false);
-                Cell cell = new Cell(blocked, forConstruction);
+                float cellX = (x - grid.length / 2f) * CELL_SIZE + (CELL_SIZE / 2);
+                float cellY = (y - grid[0].length / 2f) * CELL_SIZE + (CELL_SIZE / 2);
+                Cell cell = new Cell(cellX, cellY, blocked, forConstruction);
                 grid[x][y] = cell;
             }
         }
@@ -60,20 +59,14 @@ public class Map extends Entity {
         return grid[(int) ((x + getWidth() / 2) / CELL_SIZE)][(int) ((y + getHeight() /2) / CELL_SIZE)];
     }
 
-    private Tower getTowerAt(float x, float y) {
-        return towers[(int) ((x + getWidth() / 2) / CELL_SIZE)][(int) ((y + getHeight() /2) / CELL_SIZE)];
-    }
-
     public void select(float x, float y){
         if(inMapBounds(x, y)){
-            Tower tower = getTowerAt(x, y);
-            if(tower != null)
-                ;
-            else{
-                Cell cell = getCellAt(x, y);
-                selector.getPosition().set(x, y);
-                selector.enable();
+            if(selectedCell != null){
+                selectedCell.deselect();
             }
+            Cell cell = getCellAt(x, y);
+            cell.select();
+            selectedCell = cell;
         }
     }
 
@@ -98,53 +91,5 @@ public class Map extends Entity {
 
     public float getHeight(){
         return grid[0].length * CELL_SIZE;
-    }
-
-    private class CellSelector extends Entity {
-
-        private RenderComponent renderComponent;
-
-        private boolean enabled;
-
-        public CellSelector() {
-            super(0, 0);
-            renderComponent = new DrawComponent(new Texture("cells/selector.png"), CELL_SIZE, CELL_SIZE, RenderComponent.Realm.Game, RenderComponent.Layer.Zero);
-        }
-
-        public void enable() {
-            if(!enabled) {
-                addComponent(renderComponent);
-                enabled = true;
-            }
-        }
-
-        public void disable() {
-            removeComponent(renderComponent);
-            enabled = false;
-        }
-
-        public boolean isEnabled() {
-            return enabled;
-        }
-    }
-
-    private class Cell {
-
-        private boolean blocked;
-        private boolean forConstruction;
-
-        public Cell(boolean blocked, boolean forConstruction) {
-            this.blocked = blocked;
-            this.forConstruction = forConstruction;
-        }
-
-        public boolean isBlocked(){
-            return blocked;
-        }
-
-        public boolean isForConstruction(){
-            return !blocked && forConstruction;
-        }
-
     }
 }

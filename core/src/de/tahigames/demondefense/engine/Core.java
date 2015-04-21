@@ -18,6 +18,9 @@ public class Core {
     private PhysicsEngine physicsEngine;
     private AIEngine aiEngine;
 
+    private boolean paused;
+    private float speed;
+
     private Entity root;
 
     private FPSLogger fpsLogger;
@@ -27,6 +30,9 @@ public class Core {
         renderingEngine = new RenderingEngine();
         physicsEngine = new PhysicsEngine(30);
         aiEngine = new AIEngine(30);
+
+        paused = false;
+        speed = 1;
 
         root = new Entity(0,0);
         root.setCore(this);
@@ -39,11 +45,26 @@ public class Core {
     public void run(){
         float delta = Gdx.graphics.getDeltaTime();
 
-        aiEngine.think(delta);
-        physicsEngine.simulate(delta);
+        delta *= speed;
+        if(!paused){
+            aiEngine.think(delta);
+            physicsEngine.simulate(delta);
+        }
         renderingEngine.render(delta);
 
 //        fpsLogger.log();
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+
+    public void pause() {
+        paused = true;
+    }
+
+    public void resume() {
+        paused = false;
     }
 
     public Entity getRoot() {

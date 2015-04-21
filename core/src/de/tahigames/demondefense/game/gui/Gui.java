@@ -19,15 +19,15 @@ public class Gui extends Entity {
     private Map map;
 
     public Gui(Map map, OrthographicCamera cam) {
-        super((cam.viewportWidth * (2f/3f)) / 2f, 0);
+        super((cam.viewportWidth * (2f/3f) * cam.zoom) / 2f, 0);
         this.map = map;
-        this.width = cam.viewportWidth / 3f;
-        this.height = cam.viewportHeight;
+        this.width = cam.viewportWidth / 3f * cam.zoom;
+        this.height = cam.viewportHeight * cam.zoom;
         addComponent(new DrawComponent(new NinePatch(new Texture("gui/gui01.png"), 5, 5, 5, 5), width , height, RenderComponent.Realm.Gui, RenderComponent.Layer.Nine));
     }
 
     public boolean tap(float x, float y){
-        if(x >= this.getX() - (width / 2)){
+        if(x >= this.getX() - (width / 2)) {
             map.placeTower();
             return true;
         }

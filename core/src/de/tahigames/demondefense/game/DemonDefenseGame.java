@@ -7,13 +7,10 @@ import com.badlogic.gdx.input.GestureDetector;
 
 import de.tahigames.demondefense.engine.Core;
 import de.tahigames.demondefense.engine.Game;
-import de.tahigames.demondefense.engine.rendering.DrawComponent;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.game.gui.Gui;
 import de.tahigames.demondefense.game.input.GuiGestureListener;
 import de.tahigames.demondefense.game.input.MapGestureListener;
 import de.tahigames.demondefense.game.world.Map;
-import de.tahigames.demondefense.game.world.enemies.Enemy;
 import de.tahigames.demondefense.game.world.enemies.HellSlime;
 
 /**

@@ -23,7 +23,8 @@ public class Gui extends Entity {
         this.map = map;
         this.width = cam.viewportWidth / 3f * cam.zoom;
         this.height = cam.viewportHeight * cam.zoom;
-        addComponent(new DrawComponent(new NinePatch(new Texture("gui/gui01.png"), 5, 5, 5, 5), width , height, RenderComponent.Realm.Gui, RenderComponent.Layer.Nine));
+        addComponent(new DrawComponent(new NinePatch(new Texture("gui/gui01.png"), 7, 0, 7, 7), width , height, RenderComponent.Realm.Gui, RenderComponent.Layer.Nine));
+        addChild(new Button(getX(), getY()));
     }
 
     public boolean tap(float x, float y){

@@ -1,7 +1,6 @@
 package de.tahigames.demondefense.game.world;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -18,7 +17,7 @@ import de.tahigames.demondefense.game.world.towers.Tower;
  */
 public class Map extends Entity {
 
-    public static final int cellSize = 16;
+    public static final int CELL_SIZE = 16;
 
     private Cell[][] grid;
     private CellSelector selector;
@@ -58,11 +57,11 @@ public class Map extends Entity {
     }
 
     private Cell getCellAt(float x, float y){
-        return grid[(int) ((x + getWidth() / 2) / cellSize)][(int) ((y + getHeight() /2) / cellSize)];
+        return grid[(int) ((x + getWidth() / 2) / CELL_SIZE)][(int) ((y + getHeight() /2) / CELL_SIZE)];
     }
 
     private Tower getTowerAt(float x, float y) {
-        return towers[(int) ((x + getWidth() / 2) / cellSize)][(int) ((y + getHeight() /2) / cellSize)];
+        return towers[(int) ((x + getWidth() / 2) / CELL_SIZE)][(int) ((y + getHeight() /2) / CELL_SIZE)];
     }
 
     public void select(float x, float y){
@@ -72,9 +71,8 @@ public class Map extends Entity {
                 ;
             else{
                 Cell cell = getCellAt(x, y);
-                selector.getPosition().set((x / Cell.SIZE) * Cell.SIZE , (y / Cell.SIZE) * Cell.SIZE);
+                selector.getPosition().set(x, y);
                 selector.enable();
-                System.out.println("select cell " + (x / Cell.SIZE) * Cell.SIZE + " " + (y / Cell.SIZE) * Cell.SIZE);
             }
         }
     }
@@ -95,11 +93,11 @@ public class Map extends Entity {
     }
 
     public float getWidth(){
-        return grid.length * cellSize;
+        return grid.length * CELL_SIZE;
     }
 
     public float getHeight(){
-        return grid[0].length * cellSize;
+        return grid[0].length * CELL_SIZE;
     }
 
     private class CellSelector extends Entity {
@@ -110,7 +108,7 @@ public class Map extends Entity {
 
         public CellSelector() {
             super(0, 0);
-            renderComponent = new DrawComponent(new Texture("cells/selector.png"), Cell.SIZE, Cell.SIZE, RenderComponent.Realm.Game, RenderComponent.Layer.Zero);
+            renderComponent = new DrawComponent(new Texture("cells/selector.png"), CELL_SIZE, CELL_SIZE, RenderComponent.Realm.Game, RenderComponent.Layer.Zero);
         }
 
         public void enable() {
@@ -128,5 +126,25 @@ public class Map extends Entity {
         public boolean isEnabled() {
             return enabled;
         }
+    }
+
+    private class Cell {
+
+        private boolean blocked;
+        private boolean forConstruction;
+
+        public Cell(boolean blocked, boolean forConstruction) {
+            this.blocked = blocked;
+            this.forConstruction = forConstruction;
+        }
+
+        public boolean isBlocked(){
+            return blocked;
+        }
+
+        public boolean isForConstruction(){
+            return !blocked && forConstruction;
+        }
+
     }
 }

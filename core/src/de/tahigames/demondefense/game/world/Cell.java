@@ -24,6 +24,24 @@ public class Cell extends Entity{
         this.forConstruction = forConstruction;
     }
 
+    public void placeTower(Tower tower){
+        if(tower != null){
+            throw new IllegalStateException("Tower already exists");
+        }
+        this.tower = tower;
+        addChild(this.tower);
+        this.tower.getPosition().set(getPosition());
+        deselect();
+        select();
+    }
+
+    public void removeTower(){
+        removeChild(tower);
+        this.tower = null;
+        deselect();
+        select();
+    }
+
     public void select(){
         if(tower != null){
             tower.select();
@@ -41,7 +59,7 @@ public class Cell extends Entity{
     }
 
     public boolean isBlocked(){
-        return blocked;
+        return blocked || this.tower != null;
     }
 
     public boolean isForConstruction(){

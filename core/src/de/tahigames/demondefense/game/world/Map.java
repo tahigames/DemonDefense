@@ -1,5 +1,6 @@
 package de.tahigames.demondefense.game.world;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -43,6 +44,7 @@ public class Map extends Entity {
                 float cellX = (x - grid.length / 2f) * CELL_SIZE + (CELL_SIZE / 2);
                 float cellY = (y - grid[0].length / 2f) * CELL_SIZE + (CELL_SIZE / 2);
                 Cell cell = new Cell(cellX, cellY, blocked, forConstruction);
+                addChild(cell);
                 grid[x][y] = cell;
             }
         }
@@ -61,12 +63,15 @@ public class Map extends Entity {
 
     public void select(float x, float y){
         if(inMapBounds(x, y)){
-            if(selectedCell != null){
-                selectedCell.deselect();
-            }
             Cell cell = getCellAt(x, y);
-            cell.select();
-            selectedCell = cell;
+            if(cell.isForConstruction()){
+
+                if(selectedCell != null){
+                    selectedCell.deselect();
+                }
+                cell.select();
+                selectedCell = cell;
+            }
         }
     }
 

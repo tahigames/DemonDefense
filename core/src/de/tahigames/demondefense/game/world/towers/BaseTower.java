@@ -2,6 +2,7 @@ package de.tahigames.demondefense.game.world.towers;
 
 import com.badlogic.gdx.graphics.Texture;
 
+import de.tahigames.demondefense.engine.rendering.AnimationComponent;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
 
@@ -11,7 +12,7 @@ import de.tahigames.demondefense.engine.rendering.RenderComponent;
 public class BaseTower extends  Tower{
 
     public BaseTower() {
-        super("Basis Turm", new DrawComponent(new Texture("towers/tower01.png"), SIZE, SIZE, RenderComponent.Realm.Game, DrawComponent.Layer.Five));
+        super("Basis Turm", new DrawComponent(new Texture("towers/tower01.png"), SIZE, SIZE, RenderComponent.Realm.Game, AnimationComponent.Layer.Five));
     }
 
     @Override

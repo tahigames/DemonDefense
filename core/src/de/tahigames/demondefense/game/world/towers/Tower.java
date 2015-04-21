@@ -3,7 +3,7 @@ package de.tahigames.demondefense.game.world.towers;
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.physics.Circle;
 import de.tahigames.demondefense.engine.physics.PhysicsComponent;
-import de.tahigames.demondefense.engine.rendering.DrawComponent;
+import de.tahigames.demondefense.engine.rendering.AnimationComponent;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.game.world.enemies.Enemy;
 import de.tahigames.demondefense.game.world.towers.projectiles.Projectile;
@@ -20,7 +20,7 @@ public abstract class Tower extends Entity{
     private TowerAttributes[] levels;
     private PhysicsComponent physicsComponent;
 
-    public Tower(String name, DrawComponent renderComponent) {
+    public Tower(String name, RenderComponent renderComponent) {
         super(0, 0);
         this.name = name;
         level = 0;

@@ -11,7 +11,6 @@ import de.tahigames.demondefense.engine.Component;
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.engine.rendering.ShapeRenderComponent;
-import de.tahigames.demondefense.engine.rendering.DrawComponent;
 
 /**
  * Created by Mirco on 14.04.2015.

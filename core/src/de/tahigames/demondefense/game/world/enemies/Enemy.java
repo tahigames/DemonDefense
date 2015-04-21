@@ -3,7 +3,7 @@ package de.tahigames.demondefense.game.world.enemies;
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.physics.AaBb;
 import de.tahigames.demondefense.engine.physics.PhysicsComponent;
-import de.tahigames.demondefense.engine.rendering.DrawComponent;
+import de.tahigames.demondefense.engine.rendering.AnimationComponent;
 
 /**
  * Created by Marcel on 15.04.2015.
@@ -14,7 +14,7 @@ public class Enemy extends Entity {
 
     private int health;
 
-    public Enemy(float x, float y, int health, DrawComponent renderComponent) {
+    public Enemy(float x, float y, int health, AnimationComponent renderComponent) {
         super(x, y);
         this.health = health;
         addComponent(renderComponent);

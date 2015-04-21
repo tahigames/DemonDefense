@@ -1,10 +1,10 @@
 package de.tahigames.demondefense.game.gui;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 
 import de.tahigames.demondefense.engine.Entity;
+import de.tahigames.demondefense.engine.rendering.AnimationComponent;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.game.world.Map;

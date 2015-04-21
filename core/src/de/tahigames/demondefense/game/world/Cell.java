@@ -18,6 +18,8 @@ public class Cell extends Entity{
     private boolean blocked;
     private boolean forConstruction;
 
+    private boolean blockingPath;
+
     public Cell(float x , float y, boolean blocked, boolean forConstruction) {
         super(x, y);
         this.blocked = blocked;
@@ -58,11 +60,15 @@ public class Cell extends Entity{
         }
     }
 
-    public boolean isBlocked(){
-        return blocked || this.tower != null;
+    public void setBlockingPath(boolean blockingPath) {
+        this.blockingPath = blockingPath;
     }
 
-    public boolean isForConstruction(){
+    public boolean isBlocked(){
+        return blocked || this.tower != null || blockingPath;
+    }
+
+    public boolean isSelectable(){
         return !blocked && forConstruction;
     }
 

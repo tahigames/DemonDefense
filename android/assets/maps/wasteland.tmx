@@ -58,11 +58,13 @@
   <tile id="0">
    <properties>
     <property name="blocked" value="true"/>
+    <property name="start" value="true"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
     <property name="blocked" value="true"/>
+    <property name="end" value="true"/>
    </properties>
   </tile>
  </tileset>

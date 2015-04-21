@@ -1,7 +1,5 @@
 package de.tahigames.demondefense.game.input;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.MathUtils;
@@ -75,8 +73,8 @@ public class MapGestureListener implements GestureDetector.GestureListener {
         final float viewHeight = cam.viewportHeight;
 
         //clamp zoom to map
-        final float maxZoomX = map.getWidth() / viewWidth;
-        final float maxZoomY = map.getHeight() / viewHeight;
+        final float maxZoomX = map.getPixelWidth() / viewWidth;
+        final float maxZoomY = map.getPixelHeight() / viewHeight;
         final float minZoom = 0.2f;
         final float maxZoom = Math.min(maxZoomX, maxZoomY);
         cam.zoom = MathUtils.clamp(cam.zoom, minZoom, maxZoom);
@@ -97,14 +95,14 @@ public class MapGestureListener implements GestureDetector.GestureListener {
 
         Vector3 minDist = new Vector3();
         minDist.set(map.getPosition(), 0);
-        minDist.sub(map.getWidth() / 2f, map.getHeight() / 2f, 0f);
+        minDist.sub(map.getPixelWidth() / 2f, map.getPixelHeight() / 2f, 0f);
         minDist.sub(camMinExtent);
 
         minDist.set(Math.max(0, minDist.x), Math.max(0, minDist.y), 0);
 
         Vector3 maxDist = new Vector3();
         maxDist.set(map.getPosition(), 0);
-        maxDist.add(map.getWidth() / 2f, map.getHeight() / 2f, 0f);
+        maxDist.add(map.getPixelWidth() / 2f, map.getPixelHeight() / 2f, 0f);
         maxDist.sub(camMaxExtent);
 
         maxDist.set(Math.min(0, maxDist.x), Math.min(0, maxDist.y), 0);

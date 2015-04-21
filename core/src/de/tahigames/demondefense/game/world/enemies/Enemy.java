@@ -27,7 +27,7 @@ public class Enemy extends Entity {
             }
         };
         addComponent(physicsComponent);
-        addComponent(new EnemyAI(this, physicsComponent));
+        addComponent(new EnemyAI(this, physicsComponent, null));
     }
 
     public void getDamage(int damage){

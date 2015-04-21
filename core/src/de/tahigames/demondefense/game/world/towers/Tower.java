@@ -46,7 +46,8 @@ public abstract class Tower extends Entity{
     }
 
     public void deselect(){
-        physicsComponent.disableDebugging();
+        if(physicsComponent != null)
+            physicsComponent.disableDebugging();
     }
 
     protected abstract void generateLevels(TowerAttributes[] levels);

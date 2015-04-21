@@ -28,13 +28,13 @@ public class Cell extends Entity{
     }
 
     public void placeTower(Tower tower){
-        if(tower != null){
+        if(this.tower != null){
             throw new IllegalStateException("Tower already exists");
         }
+        deselect();
         this.tower = tower;
         addChild(this.tower);
         this.tower.getPosition().set(getPosition());
-        deselect();
         select();
     }
 

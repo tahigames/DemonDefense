@@ -2,6 +2,7 @@ package de.tahigames.demondefense.game.gui;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.AnimationComponent;
@@ -18,11 +19,11 @@ public class Gui extends Entity {
     private Map map;
 
     public Gui(Map map, OrthographicCamera cam) {
-        super((cam.viewportWidth * (3f/4f)) / 2f, 0);
+        super((cam.viewportWidth * (2f/3f)) / 2f, 0);
         this.map = map;
-        this.width = cam.viewportWidth / 4f;
+        this.width = cam.viewportWidth / 3f;
         this.height = cam.viewportHeight;
-        addComponent(new DrawComponent(new Texture("gui/gui01.png"), width , height, RenderComponent.Realm.Gui, RenderComponent.Layer.Nine));
+        addComponent(new DrawComponent(new NinePatch(new Texture("gui/gui01.png"), 5, 5, 5, 5), width , height, RenderComponent.Realm.Gui, RenderComponent.Layer.Nine));
     }
 
     public boolean tap(float x, float y){

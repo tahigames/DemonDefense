@@ -77,7 +77,8 @@ public abstract class PhysicsComponent extends Component {
     }
 
     public void disableDebugging() {
-        getParent().removeComponent(debugComponent);
+        if(debugComponent != null)
+            getParent().removeComponent(debugComponent);
         debugComponent = null;
     }
 

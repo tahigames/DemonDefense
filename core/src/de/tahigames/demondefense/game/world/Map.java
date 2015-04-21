@@ -9,6 +9,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.engine.rendering.TiledMapRenderComponent;
+import de.tahigames.demondefense.game.world.towers.BaseTower;
 
 /**
  * Created by Marcel on 14.04.2015.
@@ -103,10 +104,10 @@ public class Map extends Entity {
     }
 
     public void placeTower(){
-        //if(selectedCell != null){
-        //   selectedCell.placeTower(new BaseTower());
-        //    deselectCell();
-        //}
+        if(selectedCell != null){
+            Gdx.app.log("Map", "Placing tower at " + selectedCell.getX() +" " + selectedCell.getY());
+           selectedCell.placeTower(new BaseTower());
+        }
     }
 
     public int getWidth() {

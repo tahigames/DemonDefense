@@ -77,6 +77,11 @@ public abstract class PhysicsComponent extends Component {
         }
     }
 
+    public void disableDebugging() {
+        getParent().removeComponent(debugComponent);
+        debugComponent = null;
+    }
+
     @Override
     public void onAddToCore(Core core) {
         super.onAddToCore(core);

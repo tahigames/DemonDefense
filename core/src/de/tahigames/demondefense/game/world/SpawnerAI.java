@@ -35,7 +35,7 @@ public class SpawnerAI extends AIComponent {
 
     private void spawnEnemy(){
         if(spawnedEnemies < wave.getCount()){
-            //spawner.getParent().addChild(EnemyFactory.create(0, 0, wave.getType()));
+            spawner.getParent().addChild(EnemyFactory.create(0, 0, wave.getType()));
             Gdx.app.log("spawner", "SPAWN! - " + spawnedEnemies);
             spawnedEnemies++;
         }else{

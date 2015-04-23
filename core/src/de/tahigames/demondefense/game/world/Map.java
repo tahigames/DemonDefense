@@ -117,7 +117,7 @@ public class Map extends Entity {
             Gdx.app.log("Map", "Get cell at " + x + " " + y);
             if(cell.isSelectable()){
                 cell.setBlockingPath(true);
-                if(pathFinder.findPath(endX, endY, startX, startY)){
+                if(pathFinder.findPath(startX, startY, endX, endY)){
                     if(selectedCell != null){
                         selectedCell.deselect();
                     }

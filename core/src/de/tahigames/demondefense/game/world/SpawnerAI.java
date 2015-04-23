@@ -10,7 +10,7 @@ import de.tahigames.demondefense.game.world.enemies.EnemyFactory;
  */
 public class SpawnerAI extends AIComponent {
 
-    private static float spawnDelay = 5f;
+    private static float spawnDelay = 2f;
 
     private float passedTime;
     private int spawnedEnemies;

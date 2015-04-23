@@ -2,9 +2,9 @@ package de.tahigames.demondefense.game.world.towers;
 
 import com.badlogic.gdx.graphics.Texture;
 
-import de.tahigames.demondefense.engine.rendering.AnimationComponent;
-import de.tahigames.demondefense.engine.rendering.DrawComponent;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.core.rendering.AnimationComponent;
+import de.tahigames.demondefense.engine.core.rendering.DrawComponent;
+import de.tahigames.demondefense.engine.core.rendering.RenderComponent;
 
 /**
  * Created by Marcel on 15.04.2015.

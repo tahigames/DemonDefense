@@ -2,8 +2,8 @@ package de.tahigames.demondefense.game.world.towers;
 
 import java.util.List;
 
-import de.tahigames.demondefense.engine.ai.AIComponent;
-import de.tahigames.demondefense.engine.physics.PhysicsComponent;
+import de.tahigames.demondefense.engine.core.ai.AIComponent;
+import de.tahigames.demondefense.engine.core.physics.PhysicsComponent;
 import de.tahigames.demondefense.game.world.enemies.Enemy;
 
 /**

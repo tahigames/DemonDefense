@@ -4,10 +4,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 
-import de.tahigames.demondefense.engine.Entity;
-import de.tahigames.demondefense.engine.rendering.AnimationComponent;
-import de.tahigames.demondefense.engine.rendering.DrawComponent;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.core.Entity;
+import de.tahigames.demondefense.engine.core.rendering.NinePatchComponent;
+import de.tahigames.demondefense.engine.core.rendering.RenderComponent;
 import de.tahigames.demondefense.game.world.Level;
 import de.tahigames.demondefense.game.world.Map;
 
@@ -24,7 +23,7 @@ public class Gui extends Entity {
         this.map = level.getMap();
         this.width = cam.viewportWidth / 3f * cam.zoom;
         this.height = cam.viewportHeight * cam.zoom;
-        addComponent(new DrawComponent(new NinePatch(new Texture("gui/gui01.png"), 7, 0, 7, 7), width , height, RenderComponent.Realm.Gui, RenderComponent.Layer.Nine));
+        addComponent(new NinePatchComponent(new NinePatch(new Texture("gui/gui01.png"), 7, 0, 7, 7), width , height, RenderComponent.Realm.Gui, RenderComponent.Layer.Nine));
         addChild(new Button(getX(), getY()));
     }
 

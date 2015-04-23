@@ -2,7 +2,7 @@ package de.tahigames.demondefense.game.world;
 
 import com.badlogic.gdx.Gdx;
 
-import de.tahigames.demondefense.engine.ai.AIComponent;
+import de.tahigames.demondefense.engine.core.ai.AIComponent;
 import de.tahigames.demondefense.game.world.enemies.EnemyFactory;
 
 /**

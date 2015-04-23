@@ -1,8 +1,8 @@
 package de.tahigames.demondefense.game.world.towers.projectiles;
 
-import de.tahigames.demondefense.engine.Entity;
-import de.tahigames.demondefense.engine.ai.AIComponent;
-import de.tahigames.demondefense.engine.physics.PhysicsComponent;
+import de.tahigames.demondefense.engine.core.Entity;
+import de.tahigames.demondefense.engine.core.ai.AIComponent;
+import de.tahigames.demondefense.engine.core.physics.PhysicsComponent;
 
 /**
  * Created by Marcel on 15.04.2015.

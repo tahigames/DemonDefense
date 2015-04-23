@@ -4,12 +4,12 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.Queue;
 
-import de.tahigames.demondefense.engine.Entity;
+import de.tahigames.demondefense.engine.core.Entity;
 
 /**
  * Created by Marcel on 22.04.2015.
  */
-public class Spawner extends Entity{
+public class Spawner extends Entity {
 
     private int levelNr;
     private Wave[] waves;

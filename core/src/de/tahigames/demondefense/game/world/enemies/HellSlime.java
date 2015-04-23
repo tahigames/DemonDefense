@@ -6,9 +6,9 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.Queue;
 
-import de.tahigames.demondefense.engine.rendering.AnimationComponent;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
-import de.tahigames.demondefense.engine.rendering.TextureAtlas;
+import de.tahigames.demondefense.engine.core.rendering.AnimationComponent;
+import de.tahigames.demondefense.engine.core.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.core.rendering.TextureAtlas;
 
 /**
  * Created by Mirco on 20.04.2015.

@@ -2,9 +2,7 @@ package de.tahigames.demondefense.game.world;
 
 import com.badlogic.gdx.Gdx;
 
-import java.util.List;
-
-import de.tahigames.demondefense.engine.Entity;
+import de.tahigames.demondefense.engine.core.Entity;
 
 /**
  * Created by Marcel on 22.04.2015.

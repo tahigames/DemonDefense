@@ -4,10 +4,10 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.Queue;
 
-import de.tahigames.demondefense.engine.Entity;
-import de.tahigames.demondefense.engine.physics.AaBb;
-import de.tahigames.demondefense.engine.physics.PhysicsComponent;
-import de.tahigames.demondefense.engine.rendering.AnimationComponent;
+import de.tahigames.demondefense.engine.core.Entity;
+import de.tahigames.demondefense.engine.core.physics.AaBb;
+import de.tahigames.demondefense.engine.core.physics.PhysicsComponent;
+import de.tahigames.demondefense.engine.core.rendering.AnimationComponent;
 
 /**
  * Created by Marcel on 15.04.2015.
@@ -17,12 +17,10 @@ public class Enemy extends Entity {
     public static final int SIZE = 16;
 
     private int health;
-    private Queue<Vector2> path;
 
     public Enemy(float x, float y, int health, AnimationComponent renderComponent, Queue<Vector2> path) {
         super(x, y);
         this.health = health;
-        this.path = path;
         addComponent(renderComponent);
         float halfWidth = SIZE / 2;
         float halfHeight = SIZE / 2;
@@ -33,14 +31,10 @@ public class Enemy extends Entity {
             }
         };
         addComponent(physicsComponent);
-        addComponent(new EnemyAI(this, physicsComponent));
+        addComponent(new EnemyAI(this, physicsComponent, path));
     }
 
     public void getDamage(int damage){
         health -= damage;
-    }
-
-    public Queue<Vector2> getPath(){
-        return path;
     }
 }

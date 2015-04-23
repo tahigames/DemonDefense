@@ -1,10 +1,9 @@
 package de.tahigames.demondefense.game.world.towers;
 
-import de.tahigames.demondefense.engine.Entity;
-import de.tahigames.demondefense.engine.physics.Circle;
-import de.tahigames.demondefense.engine.physics.PhysicsComponent;
-import de.tahigames.demondefense.engine.rendering.AnimationComponent;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.core.Entity;
+import de.tahigames.demondefense.engine.core.physics.Circle;
+import de.tahigames.demondefense.engine.core.physics.PhysicsComponent;
+import de.tahigames.demondefense.engine.core.rendering.RenderComponent;
 import de.tahigames.demondefense.game.world.enemies.Enemy;
 import de.tahigames.demondefense.game.world.towers.projectiles.Projectile;
 

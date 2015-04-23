@@ -2,11 +2,10 @@ package de.tahigames.demondefense.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.input.GestureDetector;
 
-import de.tahigames.demondefense.engine.Core;
-import de.tahigames.demondefense.engine.Game;
+import de.tahigames.demondefense.engine.core.Core;
+import de.tahigames.demondefense.engine.core.Game;
 import de.tahigames.demondefense.game.gui.Gui;
 import de.tahigames.demondefense.game.input.GuiGestureListener;
 import de.tahigames.demondefense.game.input.MapGestureListener;

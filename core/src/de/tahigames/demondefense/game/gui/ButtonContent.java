@@ -1,6 +1,6 @@
 package de.tahigames.demondefense.game.gui;
 
-import de.tahigames.demondefense.engine.Entity;
+import de.tahigames.demondefense.engine.core.Entity;
 
 /**
  * Created by Marcel on 21.04.2015.

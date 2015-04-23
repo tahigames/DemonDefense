@@ -6,8 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import de.tahigames.demondefense.engine.ai.AIComponent;
-import de.tahigames.demondefense.engine.physics.PhysicsComponent;
+import de.tahigames.demondefense.engine.core.ai.AIComponent;
+import de.tahigames.demondefense.engine.core.physics.PhysicsComponent;
 
 /**
  * Created by Mirco on 16.04.2015.
@@ -22,12 +22,12 @@ public class EnemyAI extends AIComponent{
 
     private Vector2 target;
 
-    public EnemyAI(Enemy enemy, PhysicsComponent physicsComponent){
+    public EnemyAI(Enemy enemy, PhysicsComponent physicsComponent, Queue<Vector2> path){
         this.enemy = enemy;
         this.physicsComponent = physicsComponent;
 
         //TODO räudige queue richtig auslesen
-        this.path = new LinkedList<>(enemy.getPath());
+        this.path = path;
 
         target = path.remove();
         physicsComponent.getVelocity().set(calculateVelocity(target));

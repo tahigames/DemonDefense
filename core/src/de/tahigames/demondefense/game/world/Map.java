@@ -7,12 +7,11 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 
-import java.util.List;
 import java.util.Queue;
 
-import de.tahigames.demondefense.engine.Entity;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
-import de.tahigames.demondefense.engine.rendering.TiledMapRenderComponent;
+import de.tahigames.demondefense.engine.core.Entity;
+import de.tahigames.demondefense.engine.core.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.core.rendering.TiledMapRenderComponent;
 import de.tahigames.demondefense.game.world.enemies.EnemyFactory;
 import de.tahigames.demondefense.game.world.towers.BaseTower;
 

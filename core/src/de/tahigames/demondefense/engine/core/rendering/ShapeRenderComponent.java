@@ -30,7 +30,9 @@ public class ShapeRenderComponent extends RenderComponent {
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
         shapeRenderer.begin(shapeType);
         shapeRenderer.setColor(color);
+        shapeRenderer.translate(getParent().getTransformedX(), getParent().getTransformedY(), 0);
         bounding.render(shapeRenderer, delta);
+        shapeRenderer.translate(-getParent().getTransformedX(), -getParent().getTransformedY(), 0);
         shapeRenderer.end();
         batch.begin();
     }

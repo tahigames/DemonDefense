@@ -5,8 +5,10 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.math.Vector2;
 
 import java.util.List;
+import java.util.Queue;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
@@ -37,6 +39,7 @@ public class Map extends Entity {
         addComponent(new TiledMapRenderComponent(tiledMap, RenderComponent.Realm.Game, RenderComponent.Layer.Nine));
 
         pathFinder = new PathFinder(this);
+        pathFinder.findPath(startX, startY, endX, endY);
     }
 
     private void generateGrid(TiledMap tiledMap){
@@ -140,6 +143,20 @@ public class Map extends Entity {
             Gdx.app.log("Map", "Placing tower at " + selectedCell.getX() +" " + selectedCell.getY());
            selectedCell.placeTower(new BaseTower());
         }
+    }
+
+    public float getStartX(){
+
+        //TODO wie kann man eig so räudig sein.....
+        return (startX - grid.length / 2f) * CELL_SIZE + (CELL_SIZE / 2);
+    }
+
+    public float getStartY(){
+        return (startY - grid[0].length / 2f) * CELL_SIZE + (CELL_SIZE / 2);
+    }
+
+    public Queue<Vector2> getPath(){
+        return pathFinder.getPath();
     }
 
     public Wave[] getWaves(){

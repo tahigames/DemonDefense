@@ -1,5 +1,7 @@
 package de.tahigames.demondefense.game.world;
 
+import com.badlogic.gdx.Gdx;
+
 import java.util.List;
 
 import de.tahigames.demondefense.engine.Entity;
@@ -15,7 +17,8 @@ public class Level {
     public Level(Entity root, int levelId) {
         this.map = new Map(mapnames[levelId] + ".tmx");
         root.addChild(map);
-        map.addChild(new Spawner(0, 0, map.getWaves()));
+        map.addChild(new Spawner(map.getStartX(), map.getStartY(), map.getWaves(), map.getPath()));
+        Gdx.app.log("coord", map.getStartX() + " - " + map.getStartY());
     }
 
 

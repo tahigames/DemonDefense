@@ -26,9 +26,6 @@ public class DemonDefenseGame extends Game {
 
         core.getRoot().addChild(gui);
 
-        HellSlime slime = new HellSlime(0, 0);
-        level.getMap().addChild(slime);
-
         GestureDetector mapDetector = new GestureDetector(new MapGestureListener(level.getMap(), gui, core.getRenderingEngine().getGameCamera()));
         GestureDetector guiDetector = new GestureDetector(new GuiGestureListener(gui, core.getRenderingEngine().getGuiCamera()));
 

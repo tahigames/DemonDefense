@@ -10,7 +10,7 @@ import de.tahigames.demondefense.game.world.enemies.EnemyFactory;
  */
 public class SpawnerAI extends AIComponent {
 
-    private static float spawnDelay = 2f;
+    private static float spawnDelay = 5f;
 
     private float passedTime;
     private int spawnedEnemies;
@@ -35,7 +35,7 @@ public class SpawnerAI extends AIComponent {
 
     private void spawnEnemy(){
         if(spawnedEnemies < wave.getCount()){
-            spawner.getParent().addChild(EnemyFactory.create(0, 0, wave.getType()));
+            spawner.getParent().addChild(EnemyFactory.create(spawner.getX(), spawner.getY(), wave.getType(), spawner.getPath()));
             Gdx.app.log("spawner", "SPAWN! - " + spawnedEnemies);
             spawnedEnemies++;
         }else{

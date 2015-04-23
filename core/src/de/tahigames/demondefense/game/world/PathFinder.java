@@ -4,8 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -17,7 +19,7 @@ public class PathFinder {
 
     private Array<Node> open = new Array<PathFinder.Node>();
     private Array<Node> closed = new Array<PathFinder.Node>();
-    private Deque<Vector2> path = new LinkedList<Vector2>();
+    private List<Vector2> path = new ArrayList<>();
 
     private Node[][] nodes;
 
@@ -100,14 +102,15 @@ public class PathFinder {
 
         Node target = nodes[tx][ty];
         while (nodes[sx][sy] != target) {
-            path.addFirst(new Vector2((target.x - mapWidth / 2) * Map.CELL_SIZE + 0.5f, (target.y - mapHeight / 2) * Map.CELL_SIZE + 0.5f));
+            path.add(0, new Vector2((target.x - mapWidth / 2) * Map.CELL_SIZE + 0.5f * Map.CELL_SIZE, (target.y - mapHeight / 2) * Map.CELL_SIZE + 0.5f * Map.CELL_SIZE));
             target = target.parent;
         }
+
         Gdx.app.log("Pathfinder", "Path found!");
         return true;
     }
 
-    public Queue<Vector2> getPath() {
+    public List<Vector2> getPath() {
         return path;
     }
 

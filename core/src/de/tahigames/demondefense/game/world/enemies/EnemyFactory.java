@@ -2,6 +2,7 @@ package de.tahigames.demondefense.game.world.enemies;
 
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -16,7 +17,7 @@ public class EnemyFactory {
     };
 
 
-    public static Enemy create(float x, float y, MONSTER_TYPE type, Queue<Vector2> path){
+    public static Enemy create(float x, float y, MONSTER_TYPE type, List<Vector2> path){
 
         switch (type){
             case Slime: return new HellSlime(x, y, path);

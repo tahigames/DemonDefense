@@ -2,6 +2,7 @@ package de.tahigames.demondefense.game.world;
 
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.List;
 import java.util.Queue;
 
 import de.tahigames.demondefense.engine.core.Entity;
@@ -13,9 +14,9 @@ public class Spawner extends Entity {
 
     private int levelNr;
     private Wave[] waves;
-    private Queue<Vector2> path;
+    private List<Vector2> path;
 
-    public Spawner(float x, float y, Wave[] waves, Queue<Vector2> path) {
+    public Spawner(float x, float y, Wave[] waves, List<Vector2> path) {
         super(x, y);
         this.waves = waves;
         this.path = path;
@@ -28,7 +29,7 @@ public class Spawner extends Entity {
         addComponent(new SpawnerAI(this));
     }
 
-    public Queue<Vector2> getPath(){
+    public List<Vector2> getPath(){
         return path;
     }
 

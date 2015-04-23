@@ -7,6 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.List;
 import java.util.Queue;
 
 import de.tahigames.demondefense.engine.core.Entity;
@@ -116,7 +117,7 @@ public class Map extends Entity {
             Gdx.app.log("Map", "Get cell at " + x + " " + y);
             if(cell.isSelectable()){
                 cell.setBlockingPath(true);
-                if(pathFinder.findPath(startX, startY, endX, endY)){
+                if(pathFinder.findPath(endX, endY, startX, startY)){
                     if(selectedCell != null){
                         selectedCell.deselect();
                     }
@@ -154,7 +155,7 @@ public class Map extends Entity {
         return (startY - grid[0].length / 2f) * CELL_SIZE + (CELL_SIZE / 2);
     }
 
-    public Queue<Vector2> getPath(){
+    public List<Vector2> getPath(){
         return pathFinder.getPath();
     }
 

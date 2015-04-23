@@ -3,9 +3,12 @@ package de.tahigames.demondefense.game.world.enemies;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
+import de.tahigames.demondefense.engine.core.Core;
 import de.tahigames.demondefense.engine.core.ai.AIComponent;
 import de.tahigames.demondefense.engine.core.physics.PhysicsComponent;
 
@@ -18,28 +21,30 @@ public class EnemyAI extends AIComponent{
 
     private Enemy enemy;
     private PhysicsComponent physicsComponent;
-    private Queue<Vector2> path;
 
+    private List<Vector2> path;
+    private int currentWayPoint;
     private Vector2 target;
 
-    public EnemyAI(Enemy enemy, PhysicsComponent physicsComponent, Queue<Vector2> path){
+    public EnemyAI(Enemy enemy, PhysicsComponent physicsComponent, List<Vector2> path){
         this.enemy = enemy;
         this.physicsComponent = physicsComponent;
-
-        //TODO räudige queue richtig auslesen
         this.path = path;
 
-        target = path.remove();
+        currentWayPoint = 0;
+        target = path.get(currentWayPoint);
         physicsComponent.getVelocity().set(calculateVelocity(target));
     }
 
     @Override
     public void think(float delta) {
-        //goto 0 , 0
-        Vector2 position = new Vector2(getParent().getX(), getParent().getY());
-        if(position == target){
-            target = path.remove();
-            physicsComponent.getVelocity().set(calculateVelocity(target));
+        if(target.epsilonEquals(getParent().getTransformedX(), getParent().getTransformedY(), 2f)){
+            if(++currentWayPoint < path.size()){
+                target = path.get(currentWayPoint);
+                physicsComponent.getVelocity().set(calculateVelocity(target));
+            } else {
+                getParent().getParent().removeChild(getParent());
+            }
         }
     }
 
@@ -54,7 +59,7 @@ public class EnemyAI extends AIComponent{
         move.x = (move.x / length) * MONSTER_SPEED;
         move.y = (move.y / length) * MONSTER_SPEED;
 
-        Gdx.app.log("enemyAI","move vector: " + move.toString());
+//        Gdx.app.log("enemyAI","move vector: " + move.toString());
         return move;
     }
 

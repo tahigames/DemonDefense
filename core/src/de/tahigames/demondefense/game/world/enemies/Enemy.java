@@ -2,6 +2,7 @@ package de.tahigames.demondefense.game.world.enemies;
 
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.List;
 import java.util.Queue;
 
 import de.tahigames.demondefense.engine.core.Entity;
@@ -18,7 +19,7 @@ public class Enemy extends Entity {
 
     private int health;
 
-    public Enemy(float x, float y, int health, AnimationComponent renderComponent, Queue<Vector2> path) {
+    public Enemy(float x, float y, int health, AnimationComponent renderComponent, List<Vector2> path) {
         super(x, y);
         this.health = health;
         addComponent(renderComponent);

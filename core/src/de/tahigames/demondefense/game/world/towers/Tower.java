@@ -68,7 +68,7 @@ public abstract class Tower extends Entity{
     }
 
     public void shoot(Enemy target){
-        addChild(new Projectile(getX(), getY(), target));
+        getParent().addChild(new Projectile(getX(), getY(), target));
     }
 
 }

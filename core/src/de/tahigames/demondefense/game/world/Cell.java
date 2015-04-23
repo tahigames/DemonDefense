@@ -33,7 +33,6 @@ public class Cell extends Entity{
         deselect();
         this.tower = tower;
         addChild(this.tower);
-        this.tower.getPosition().set(getPosition());
         select();
     }
 

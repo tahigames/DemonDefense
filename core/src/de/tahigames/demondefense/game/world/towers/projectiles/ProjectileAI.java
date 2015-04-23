@@ -20,14 +20,13 @@ public class ProjectileAI extends AIComponent {
 
     @Override
     public void think(float delta) {
-        float stepX = target.getX() - getParent().getX();
-        float stepY = target.getY() - getParent().getY();
+        float stepX = target.getTransformedX() - getParent().getTransformedX();
+        float stepY = target.getTransformedY() - getParent().getTransformedY();
 
         float length = (float) Math.sqrt(stepX * stepX + stepY * stepY);
 
         stepX = (stepX / length) * PROJECTILE_SPEED;
         stepY = (stepY / length) * PROJECTILE_SPEED;
-
 
         physicsComponent.getVelocity().set(stepX, stepY);
     }

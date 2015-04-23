@@ -8,6 +8,7 @@ import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.AnimationComponent;
 import de.tahigames.demondefense.engine.rendering.DrawComponent;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
+import de.tahigames.demondefense.game.world.Level;
 import de.tahigames.demondefense.game.world.Map;
 
 /**
@@ -18,9 +19,9 @@ public class Gui extends Entity {
     private float height;
     private Map map;
 
-    public Gui(Map map, OrthographicCamera cam) {
+    public Gui(Level level, OrthographicCamera cam) {
         super((cam.viewportWidth * (2f/3f) * cam.zoom) / 2f, 0);
-        this.map = map;
+        this.map = level.getMap();
         this.width = cam.viewportWidth / 3f * cam.zoom;
         this.height = cam.viewportHeight * cam.zoom;
         addComponent(new DrawComponent(new NinePatch(new Texture("gui/gui01.png"), 7, 0, 7, 7), width , height, RenderComponent.Realm.Gui, RenderComponent.Layer.Nine));

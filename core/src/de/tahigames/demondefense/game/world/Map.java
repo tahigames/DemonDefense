@@ -5,10 +5,15 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.math.Vector2;
+
+import java.util.List;
+import java.util.Queue;
 
 import de.tahigames.demondefense.engine.Entity;
 import de.tahigames.demondefense.engine.rendering.RenderComponent;
 import de.tahigames.demondefense.engine.rendering.TiledMapRenderComponent;
+import de.tahigames.demondefense.game.world.enemies.EnemyFactory;
 import de.tahigames.demondefense.game.world.towers.BaseTower;
 
 /**
@@ -25,6 +30,8 @@ public class Map extends Entity {
     private Cell[][] grid;
     private Cell selectedCell;
 
+    private Wave[] waves;
+
     public Map(String mapName) {
         super(0, 0);
         TiledMap tiledMap = new TmxMapLoader().load("maps/" + mapName);
@@ -32,10 +39,13 @@ public class Map extends Entity {
         addComponent(new TiledMapRenderComponent(tiledMap, RenderComponent.Realm.Game, RenderComponent.Layer.Nine));
 
         pathFinder = new PathFinder(this);
+        pathFinder.findPath(startX, startY, endX, endY);
     }
 
     private void generateGrid(TiledMap tiledMap){
         MapProperties props = tiledMap.getProperties();
+        generateWaves(tiledMap.getProperties());
+
         grid = new Cell[props.get("width", Integer.class)][props.get("height", Integer.class)];
 
         TiledMapTileLayer groundLayer = (TiledMapTileLayer) tiledMap.getLayers().get(0);
@@ -59,6 +69,31 @@ public class Map extends Entity {
                 grid[x][y] = cell;
             }
         }
+    }
+
+    private void generateWaves(MapProperties props){
+        waves = new Wave[10];
+
+        for (int i = 0; i < waves.length; i++) {
+            waves[i] = fetchWave(props.get("wave" + (i + 1), String.class));
+        }
+    }
+
+    private Wave fetchWave(String prop){
+        EnemyFactory.MONSTER_TYPE type = null;
+        int count = Integer.parseInt(prop.substring(1, prop.length()));
+
+        String t = prop.substring(0, 1);
+        switch (t){
+            case "b": type = EnemyFactory.MONSTER_TYPE.Bat;
+                break;
+            case "d": type = EnemyFactory.MONSTER_TYPE.Demon;
+                break;
+            case "s": type = EnemyFactory.MONSTER_TYPE.Slime;
+                break;
+        }
+
+        return new Wave(count, type);
     }
 
     private Boolean fetchProperty(TiledMapTileLayer.Cell cell, String propertyName, boolean defaultValue){
@@ -108,6 +143,24 @@ public class Map extends Entity {
             Gdx.app.log("Map", "Placing tower at " + selectedCell.getX() +" " + selectedCell.getY());
            selectedCell.placeTower(new BaseTower());
         }
+    }
+
+    public float getStartX(){
+
+        //TODO wie kann man eig so räudig sein.....
+        return (startX - grid.length / 2f) * CELL_SIZE + (CELL_SIZE / 2);
+    }
+
+    public float getStartY(){
+        return (startY - grid[0].length / 2f) * CELL_SIZE + (CELL_SIZE / 2);
+    }
+
+    public Queue<Vector2> getPath(){
+        return pathFinder.getPath();
+    }
+
+    public Wave[] getWaves(){
+        return waves;
     }
 
     public int getWidth() {

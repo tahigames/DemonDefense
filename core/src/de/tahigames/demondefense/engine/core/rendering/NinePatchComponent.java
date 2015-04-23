@@ -28,4 +28,12 @@ public class NinePatchComponent extends RenderComponent {
     public void setNinePatch(NinePatch ninePatch) {
         this.ninePatch = ninePatch;
     }
+
+    public void setWidth(float width) {
+        this.width = width;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
 }

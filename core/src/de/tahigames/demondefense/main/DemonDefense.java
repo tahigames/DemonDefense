@@ -2,7 +2,7 @@ package de.tahigames.demondefense.main;
 
 import com.badlogic.gdx.ApplicationAdapter;
 
-import de.tahigames.demondefense.engine.Core;
+import de.tahigames.demondefense.engine.core.Core;
 import de.tahigames.demondefense.game.DemonDefenseGame;
 
 public class DemonDefense extends ApplicationAdapter {

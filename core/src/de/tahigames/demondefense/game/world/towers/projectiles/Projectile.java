@@ -31,7 +31,7 @@ public class Projectile extends Entity{
             @Override
             public void onCollisionWith(Entity e) {
                 if(e == target){
-                    ((Enemy) e).getDamage(damage);
+                    ((Enemy) e).doDamage(damage);
                     getParent().getParent().removeChild(getParent());
                 }
             }

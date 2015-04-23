@@ -1,6 +1,7 @@
 package de.tahigames.demondefense.game.world.enemies;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
@@ -38,10 +39,10 @@ public class Enemy extends Entity {
         };
         addComponent(physicsComponent);
         addComponent(new EnemyAI(this, physicsComponent, path));
-        addComponent(new ShapeRenderComponent(RenderComponent.Realm.Game, RenderComponent.Layer.Seven, new AaBb(-6, 10, 6, 11), ShapeRenderer.ShapeType.Line, Color.BLACK));
+        addChild(new Healthbar(0, 10));
     }
 
-    public void getDamage(int damage){
+    public void doDamage(int damage){
         health -= damage;
     }
 }

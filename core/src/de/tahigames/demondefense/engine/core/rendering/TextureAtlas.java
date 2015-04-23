@@ -1,4 +1,4 @@
-package de.tahigames.demondefense.engine.rendering;
+package de.tahigames.demondefense.engine.core.rendering;
 
 import com.badlogic.gdx.graphics.Texture;
 

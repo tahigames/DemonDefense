@@ -1,4 +1,4 @@
-package de.tahigames.demondefense.engine.ai;
+package de.tahigames.demondefense.engine.core.ai;
 
 /**
  * Created by Mirco on 15.04.2015.

@@ -1,10 +1,9 @@
-package de.tahigames.demondefense.engine.physics;
+package de.tahigames.demondefense.engine.core.physics;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import de.tahigames.demondefense.engine.Engine;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.core.Engine;
 
 /**
  * Created by Mirco on 14.04.2015.

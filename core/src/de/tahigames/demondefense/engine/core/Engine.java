@@ -1,4 +1,4 @@
-package de.tahigames.demondefense.engine;
+package de.tahigames.demondefense.engine.core;
 
 import java.util.ArrayList;
 

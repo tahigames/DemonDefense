@@ -1,7 +1,4 @@
-package de.tahigames.demondefense.engine;
-
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Camera;
+package de.tahigames.demondefense.engine.core;
 
 /**
  * Created by Mirco on 14.04.2015.

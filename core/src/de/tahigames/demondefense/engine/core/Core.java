@@ -1,11 +1,11 @@
-package de.tahigames.demondefense.engine;
+package de.tahigames.demondefense.engine.core;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.FPSLogger;
 
-import de.tahigames.demondefense.engine.ai.AIEngine;
-import de.tahigames.demondefense.engine.physics.PhysicsEngine;
-import de.tahigames.demondefense.engine.rendering.RenderingEngine;
+import de.tahigames.demondefense.engine.core.ai.AIEngine;
+import de.tahigames.demondefense.engine.core.physics.PhysicsEngine;
+import de.tahigames.demondefense.engine.core.rendering.RenderingEngine;
 
 /**
  * Created by Mirco on 14.04.2015.

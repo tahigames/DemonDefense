@@ -1,7 +1,7 @@
-package de.tahigames.demondefense.engine.ai;
+package de.tahigames.demondefense.engine.core.ai;
 
-import de.tahigames.demondefense.engine.Component;
-import de.tahigames.demondefense.engine.Core;
+import de.tahigames.demondefense.engine.core.Component;
+import de.tahigames.demondefense.engine.core.Core;
 
 /**
  * Created by Mirco on 15.04.2015.

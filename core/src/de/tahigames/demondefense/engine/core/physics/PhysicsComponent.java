@@ -1,4 +1,4 @@
-package de.tahigames.demondefense.engine.physics;
+package de.tahigames.demondefense.engine.core.physics;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -6,11 +6,11 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
 
-import de.tahigames.demondefense.engine.Core;
-import de.tahigames.demondefense.engine.Component;
-import de.tahigames.demondefense.engine.Entity;
-import de.tahigames.demondefense.engine.rendering.RenderComponent;
-import de.tahigames.demondefense.engine.rendering.ShapeRenderComponent;
+import de.tahigames.demondefense.engine.core.Core;
+import de.tahigames.demondefense.engine.core.Component;
+import de.tahigames.demondefense.engine.core.Entity;
+import de.tahigames.demondefense.engine.core.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.core.rendering.ShapeRenderComponent;
 
 /**
  * Created by Mirco on 14.04.2015.
@@ -22,6 +22,8 @@ public abstract class PhysicsComponent extends Component {
     private Vector2 position;
     private Vector2 velocity;
 
+    private Vector2 movement;
+
     private ArrayList<PhysicsComponent> currentCollisions;
 
     private ShapeRenderComponent debugComponent;
@@ -30,17 +32,21 @@ public abstract class PhysicsComponent extends Component {
         this.bounding = bounding;
         position = new Vector2();
         velocity = new Vector2();
+
+        movement = new Vector2();
+
         currentCollisions = new ArrayList<>();
     }
 
     public void integrate(float delta){
-        position.set(getParent().getPosition());
-        position.add(velocity.x * delta, velocity.y * delta);
+        position.set(getParent().getTransformedX(), getParent().getTransformedY());
+        movement.set(velocity.x * delta, velocity.y * delta);
+        position.add(movement);
         bounding.moveTo(position);
     }
 
     public void apply() {
-        getParent().getPosition().set(position);
+        getParent().getPosition().add(movement);
     }
 
     public CollisionManifest testCollisionWith(PhysicsComponent other){

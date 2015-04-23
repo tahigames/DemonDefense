@@ -1,18 +1,16 @@
-package de.tahigames.demondefense.engine.rendering;
+package de.tahigames.demondefense.engine.core.rendering;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import de.tahigames.demondefense.engine.Engine;
+import de.tahigames.demondefense.engine.core.Engine;
 
 /**
  * Created by Mirco on 14.04.2015.

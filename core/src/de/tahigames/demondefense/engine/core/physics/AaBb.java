@@ -1,6 +1,5 @@
-package de.tahigames.demondefense.engine.physics;
+package de.tahigames.demondefense.engine.core.physics;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 

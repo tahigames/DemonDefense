@@ -1,4 +1,4 @@
-package de.tahigames.demondefense.engine;
+package de.tahigames.demondefense.engine.core;
 
 import com.badlogic.gdx.math.Vector2;
 
@@ -103,5 +103,19 @@ public class Entity {
 
     public float getY() {
         return position.y;
+    }
+
+    public float getTransformedX() {
+        float transformedX = getX();
+        if(parent != null)
+            transformedX += parent.getTransformedX();
+        return transformedX;
+    }
+
+    public float getTransformedY() {
+        float transformedY = getY();
+        if(parent != null)
+            transformedY += parent.getTransformedY();
+        return transformedY;
     }
 }

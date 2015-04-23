@@ -1,13 +1,12 @@
-package de.tahigames.demondefense.engine.rendering;
+package de.tahigames.demondefense.engine.core.rendering;
 
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-import de.tahigames.demondefense.engine.Core;
+import de.tahigames.demondefense.engine.core.Core;
 
 /**
  * Created by Mirco on 18.04.2015.

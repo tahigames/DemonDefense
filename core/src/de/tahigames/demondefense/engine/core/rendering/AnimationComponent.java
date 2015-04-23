@@ -1,6 +1,5 @@
-package de.tahigames.demondefense.engine.rendering;
+package de.tahigames.demondefense.engine.core.rendering;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -48,8 +47,8 @@ public class AnimationComponent extends RenderComponent {
     public void render(SpriteBatch batch, float delta){
         stateTime += delta;
         TextureRegion currentFrame = animation.getKeyFrame(stateTime);
-        float x = getParent().getX() - width / 2f;
-        float y = getParent().getY() - height / 2f;
+        float x = getParent().getTransformedX() - width / 2f;
+        float y = getParent().getTransformedY() - height / 2f;
         batch.draw(currentFrame, x, y, width, height);
     }
 

@@ -39,7 +39,10 @@ public class RenderingEngine extends Engine<RenderComponent> {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        float lineWidth = 2f;
+
         gameCamera.update();
+        Gdx.gl.glLineWidth(lineWidth / gameCamera.zoom);
 
         List<RenderComponent> components = getComponents();
         int j = 0;
@@ -55,6 +58,9 @@ public class RenderingEngine extends Engine<RenderComponent> {
             }
         }
         batch.end();
+
+        Gdx.gl.glLineWidth(lineWidth / guiCamera.zoom);
+
         batch.begin();
         {
             batch.setProjectionMatrix(guiCamera.combined);

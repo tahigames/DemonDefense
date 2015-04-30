@@ -1,20 +1,13 @@
 package de.tahigames.demondefense.game.world.enemies;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.List;
-import java.util.Queue;
 
 import de.tahigames.demondefense.engine.core.Entity;
 import de.tahigames.demondefense.engine.core.physics.AaBb;
 import de.tahigames.demondefense.engine.core.physics.PhysicsComponent;
 import de.tahigames.demondefense.engine.core.rendering.AnimationComponent;
-import de.tahigames.demondefense.engine.core.rendering.DrawComponent;
-import de.tahigames.demondefense.engine.core.rendering.RenderComponent;
-import de.tahigames.demondefense.engine.core.rendering.ShapeRenderComponent;
 
 /**
  * Created by Marcel on 15.04.2015.
@@ -23,11 +16,15 @@ public class Enemy extends Entity {
 
     public static final int SIZE = 16;
 
-    private int health;
+    private Healthbar healthbar;
 
-    public Enemy(float x, float y, int health, AnimationComponent renderComponent, List<Vector2> path) {
+    private final int maxHealth;
+    private float currentHealth;
+
+    public Enemy(float x, float y, int maxHealth, AnimationComponent renderComponent, List<Vector2> path) {
         super(x, y);
-        this.health = health;
+        this.maxHealth = maxHealth;
+        this.currentHealth = maxHealth;
         addComponent(renderComponent);
         float halfWidth = SIZE / 2;
         float halfHeight = SIZE / 2;
@@ -39,10 +36,21 @@ public class Enemy extends Entity {
         };
         addComponent(physicsComponent);
         addComponent(new EnemyAI(this, physicsComponent, path));
-        addChild(new Healthbar(0, 10));
+
+        this.healthbar = new Healthbar(0, 10, maxHealth, 5);
+        addChild(healthbar);
     }
 
-    public void doDamage(int damage){
-        health -= damage;
+    public void doDamage(float damage){
+        currentHealth -= damage;
+        healthbar.setHealth(currentHealth);
+    }
+
+    public boolean isDead() {
+        return currentHealth <= 0;
+    }
+
+    public float getCurrentHealth() {
+        return currentHealth;
     }
 }

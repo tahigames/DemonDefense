@@ -16,9 +16,7 @@ import de.tahigames.demondefense.game.world.enemies.Enemy;
  */
 public class Projectile extends Entity{
 
-    private int damage;
-
-    public Projectile(float x, float y, final Enemy target) {
+    public Projectile(float x, float y, final int damage, final Enemy target) {
         super(x, y);
         TextureAtlas atlas = new TextureAtlas(new Texture("towers/projectiles/projectile01.png"), 1, 1);
         addComponent(new AnimationComponent(atlas, 0, Animation.PlayMode.NORMAL, RenderComponent.Realm.Game, RenderComponent.Layer.Four));

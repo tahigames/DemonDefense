@@ -38,6 +38,9 @@ public class EnemyAI extends AIComponent{
 
     @Override
     public void think(float delta) {
+        if(enemy.getCurrentHealth() <= 0)
+            getParent().getParent().removeChild(enemy);
+
         if(target.epsilonEquals(getParent().getTransformedX(), getParent().getTransformedY(), 2f)){
             if(++currentWayPoint < path.size()){
                 target = path.get(currentWayPoint);

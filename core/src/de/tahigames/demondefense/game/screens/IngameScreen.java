@@ -26,7 +26,7 @@ public class IngameScreen extends Screen {
         GestureDetector mapDetector = new GestureDetector(new MapGestureListener(level.getMap(), gui, core.getRenderingEngine().getGameCamera()));
         GestureDetector guiDetector = new GestureDetector(new GuiGestureListener(gui, core.getRenderingEngine().getGuiCamera()));
 
-        InputMultiplexer multiplexer = new InputMultiplexer(guiDetector, mapDetector);
+        InputMultiplexer multiplexer = new InputMultiplexer(this, guiDetector, mapDetector);
         Gdx.input.setInputProcessor(multiplexer);
     }
 

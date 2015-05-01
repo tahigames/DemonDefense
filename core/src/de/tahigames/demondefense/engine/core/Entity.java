@@ -38,6 +38,11 @@ public class Entity {
         child.setParent(null);
     }
 
+    public void removeAllChildren() {
+        while(children.size() > 0)
+            removeChild(children.get(children.size() - 1));
+    }
+
     public void setCore(Core core){
         this.core = core;
     }

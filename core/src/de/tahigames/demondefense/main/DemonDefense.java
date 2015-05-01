@@ -4,7 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 
 import de.tahigames.demondefense.engine.core.Core;
 import de.tahigames.demondefense.engine.core.Game;
-import de.tahigames.demondefense.game.screens.IngameScreen;
+import de.tahigames.demondefense.game.screens.MenuScreen;
 
 public class DemonDefense extends ApplicationAdapter {
 
@@ -12,7 +12,7 @@ public class DemonDefense extends ApplicationAdapter {
 
 	@Override
 	public void create () {
-		core = new Core(new Game(new IngameScreen()));
+		core = new Core(new Game(new MenuScreen()));
 	}
 
 	@Override

@@ -34,10 +34,11 @@ public class Panel extends Entity {
 
     public void tap(float x, float y) {
         if(contains(x, y)){
-            if(this instanceof Button)
+            if(this instanceof Button){
                 ((Button)this).onTap();
-            for (Entity e : getChildren()){
-                ((Panel)e).tap(x, y);
+            }
+            for (int i = 0; i < getChildren().size(); i++){
+                ((Panel)getChildren().get(i)).tap(x, y);
             }
         }
     }

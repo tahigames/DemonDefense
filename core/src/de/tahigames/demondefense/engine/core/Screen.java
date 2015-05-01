@@ -2,6 +2,7 @@ package de.tahigames.demondefense.engine.core;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.input.GestureDetector;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
 import de.tahigames.demondefense.engine.core.rendering.RenderComponent;
@@ -22,7 +23,7 @@ public abstract class Screen implements InputProcessor {
         gui = new Panel(0, 0, Float.MAX_VALUE, Float.MAX_VALUE, RenderComponent.Layer.Nine);
     }
 
-    void init(Game game, Core core){
+    void start(Game game, Core core){
         this.game = game;
         root.setCore(core);
         gui.setCore(core);
@@ -31,6 +32,13 @@ public abstract class Screen implements InputProcessor {
     }
 
     protected abstract void initialize(Core core);
+
+    void end() {
+        root.removeAllChildren();
+        gui.removeAllChildren();
+
+        dispose();
+    }
 
     public abstract void dispose();
 
@@ -64,6 +72,9 @@ public abstract class Screen implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        Vector3 coords = new Vector3(screenX, screenY, 0);
+        game.getCore().getRenderingEngine().getGuiCamera().unproject(coords);
+        gui.tap(coords.x, coords.y);
         return false;
     }
 

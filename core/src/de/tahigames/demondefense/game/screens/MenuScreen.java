@@ -20,19 +20,27 @@ public class MenuScreen extends Screen {
     @Override
     public void initialize(Core core) {
 
-        Panel backgroundPanel = new Panel(0, 0, 40, 80, RenderComponent.Layer.Nine);
+        Panel backgroundPanel = new Panel(60, 0, 40, 80, RenderComponent.Layer.Nine);
         backgroundPanel.setBackground(new NinePatch(new Texture("gui/gui01.png"), 7, 0, 7, 7));
 
-        backgroundPanel.addChild(new Button(0, 0, 32, 16, new NinePatch(new Texture("gui/button01.png"), 6, 6, 7, 7), RenderComponent.Layer.Eight) {
+        backgroundPanel.addChild(new Button(0, 24, 32, 16, "Start", new NinePatch(new Texture("gui/button01.png"), 6, 6, 7, 7), RenderComponent.Layer.Eight) {
             @Override
             protected void onTap() {
                 game.setScreen(new IngameScreen());
             }
         });
+        backgroundPanel.addChild(new Button(0, 0, 32, 16, "Options", new NinePatch(new Texture("gui/button01.png"), 6, 6, 7, 7), RenderComponent.Layer.Eight) {
+            @Override
+            protected void onTap() {
+            }
+        });
+        backgroundPanel.addChild(new Button(0, -24, 32, 16, "End", new NinePatch(new Texture("gui/button01.png"), 6, 6, 7, 7), RenderComponent.Layer.Eight) {
+            @Override
+            protected void onTap() {
+            }
+        });
 
         getGui().addChild(backgroundPanel);
-
-//        game.setScreen(new IngameScreen());
     }
 
     @Override

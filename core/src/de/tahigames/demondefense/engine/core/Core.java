@@ -55,6 +55,11 @@ public class Core {
 //        fpsLogger.log();
     }
 
+    public void dispose()
+    {
+        game.dispose();
+    }
+
     public void setSpeed(float speed) {
         this.speed = speed;
     }

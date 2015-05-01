@@ -13,7 +13,7 @@ public class Entity {
 
     private Entity parent;
 
-    private ArrayList<Entity> entities;
+    private ArrayList<Entity> children;
     private ArrayList<Component> components;
 
     private Vector2 position;
@@ -22,23 +22,23 @@ public class Entity {
         position = new Vector2(x, y);
 
         //consider lazy initialization?
-        entities = new ArrayList<>();
+        children = new ArrayList<>();
         components = new ArrayList<>();
     }
 
     public void addChild(Entity child){
-        entities.add(child);
+        children.add(child);
         child.setParent(this);
         child.onAddToCore(core);
     }
 
     public void removeChild(Entity child){
-        entities.remove(child);
+        children.remove(child);
         child.onRemoveFromCore(core);
         child.setParent(null);
     }
 
-    void setCore(Core core){
+    public void setCore(Core core){
         this.core = core;
     }
 
@@ -49,8 +49,8 @@ public class Entity {
             for (int i = components.size() - 1; i >= 0; i--) {
                 components.get(i).onAddToCore(core);
             }
-            for (int i = entities.size() - 1; i >= 0; i--) {
-                entities.get(i).onAddToCore(core);
+            for (int i = children.size() - 1; i >= 0; i--) {
+                children.get(i).onAddToCore(core);
             }
         }
     }
@@ -62,7 +62,7 @@ public class Entity {
             for (Component c : components) {
                 c.onRemoveFromCore(core);
             }
-            for (Entity e : entities) {
+            for (Entity e : children) {
                 e.onRemoveFromCore(core);
             }
         }
@@ -70,7 +70,7 @@ public class Entity {
 
     public void addComponent(Component component) {
         if(component.getParent() != null)
-            throw new IllegalArgumentException("You cannot add a component to two entities at once!");
+            throw new IllegalArgumentException("You cannot add a component to two  at once!");
 
         components.add(component);
         component.setParent(this);
@@ -91,6 +91,10 @@ public class Entity {
 
     public Entity getParent() {
         return parent;
+    }
+
+    public ArrayList<Entity> getChildren() {
+        return children;
     }
 
     public Vector2 getPosition() {

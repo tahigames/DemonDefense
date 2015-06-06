@@ -6,8 +6,8 @@ import com.badlogic.gdx.input.GestureDetector;
 
 import de.tahigames.demondefense.engine.core.Core;
 import de.tahigames.demondefense.engine.core.Screen;
-import de.tahigames.demondefense.game.gui.Gui;
-import de.tahigames.demondefense.game.input.GuiGestureListener;
+import de.tahigames.demondefense.engine.core.rendering.RenderComponent;
+import de.tahigames.demondefense.engine.gui.Panel;
 import de.tahigames.demondefense.game.input.MapGestureListener;
 import de.tahigames.demondefense.game.world.Level;
 
@@ -18,15 +18,14 @@ public class IngameScreen extends Screen {
 
     @Override
     protected void initialize(Core core) {
-        Level level = new Level(core.getRoot(), 0);
-        Gui gui = new Gui(level, core.getRenderingEngine().getGuiCamera());
+        Level level = new Level(getRoot(), 0);
 
-        core.getRoot().addChild(gui);
+        Panel sidePanel = new Panel(60, 0, 80, 40, RenderComponent.Layer.Nine);
+        getGui().addChild(sidePanel);
 
-        GestureDetector mapDetector = new GestureDetector(new MapGestureListener(level.getMap(), gui, core.getRenderingEngine().getGameCamera()));
-        GestureDetector guiDetector = new GestureDetector(new GuiGestureListener(gui, core.getRenderingEngine().getGuiCamera()));
+        GestureDetector mapDetector = new GestureDetector(new MapGestureListener(level.getMap(), sidePanel.getWidth(), core.getRenderingEngine().getGameCamera()));
 
-        InputMultiplexer multiplexer = new InputMultiplexer(this, guiDetector, mapDetector);
+        InputMultiplexer multiplexer = new InputMultiplexer(this, mapDetector);
         Gdx.input.setInputProcessor(multiplexer);
     }
 

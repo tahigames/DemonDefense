@@ -21,8 +21,6 @@ public class Core {
     private boolean paused;
     private float speed;
 
-    private Entity root;
-
     private FPSLogger fpsLogger;
 
     public Core(Game game){
@@ -33,9 +31,6 @@ public class Core {
 
         paused = false;
         speed = 1;
-
-        root = new Entity(0,0);
-        root.setCore(this);
 
         fpsLogger = new FPSLogger();
 
@@ -70,10 +65,6 @@ public class Core {
 
     public void resume() {
         paused = false;
-    }
-
-    public Entity getRoot() {
-        return root;
     }
 
     public RenderingEngine getRenderingEngine() {

@@ -61,4 +61,11 @@ public class Panel extends Entity {
         return false;
     }
 
+    public float getWidth() {
+        return width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
 }

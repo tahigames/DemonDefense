@@ -16,13 +16,13 @@ public class MapGestureListener implements GestureDetector.GestureListener {
 
     private OrthographicCamera cam;
     private Map map;
-    private Gui gui;
+    private float guiWidth;
     private float initialScale;
 
-    public MapGestureListener(Map map, Gui gui, OrthographicCamera cam){
+    public MapGestureListener(Map map, float guiWidth, OrthographicCamera cam){
         this.map = map;
-        this.gui = gui;
         this.cam = cam;
+        this.guiWidth = guiWidth;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class MapGestureListener implements GestureDetector.GestureListener {
     public boolean zoom(float initialDistance, float distance) {
         cam.zoom = initialScale * (initialDistance / distance);
 
-        final float viewWidth = cam.viewportWidth - gui.getWidth();
+        final float viewWidth = cam.viewportWidth - guiWidth;
         final float viewHeight = cam.viewportHeight;
 
         //clamp zoom to map
@@ -91,7 +91,7 @@ public class MapGestureListener implements GestureDetector.GestureListener {
         final float viewHeight = cam.viewportHeight;
 
         Vector3 camMinExtent = new Vector3(cam.position.x - (viewWidth / 2f) * cam.zoom, cam.position.y - (viewHeight / 2f) * cam.zoom, 0);
-        Vector3 camMaxExtent = new Vector3(cam.position.x + ((viewWidth / 2f - gui.getWidth()) * cam.zoom), cam.position.y + (viewHeight / 2f) * cam.zoom, 0);
+        Vector3 camMaxExtent = new Vector3(cam.position.x + ((viewWidth / 2f - guiWidth) * cam.zoom), cam.position.y + (viewHeight / 2f) * cam.zoom, 0);
 
         Vector3 minDist = new Vector3();
         minDist.set(map.getPosition(), 0);
